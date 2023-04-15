@@ -29,6 +29,15 @@ useEffect(() => {
             <MotoForm />
             <h3>Motivations</h3>
             {/* LIST HERE */}
+            
+            {
+            motivations.length > 0 ?
+            <ul>
+                {motivations.map(motivation => <li key={motivation.id}>{motivation.motivation}</li>)}
+            </ul>
+            :
+            <p>You do not yet have any motivations submitted to list</p>
+            }
 
             <BlessingForm />
             <h3>Blessings</h3>
