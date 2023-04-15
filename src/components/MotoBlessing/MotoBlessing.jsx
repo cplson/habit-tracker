@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import MotoForm from '../MotoForm/MotoForm';
@@ -35,6 +35,7 @@ function MotoBlessing() {
         <div className='container'>
             <MotoForm />
             <h3>Motivations</h3>
+                {/* if the user has at least one motivation list them in an unordered list */}
             {
                 motivations.length > 0 ?
                     <ul>
@@ -46,6 +47,7 @@ function MotoBlessing() {
 
             <BlessingForm />
             <h3>Blessings</h3>
+            {/* if the user has at least one blessing list them in an unordered list */}
             {
                 blessings.length > 0 ?
                     <ul>
