@@ -23,16 +23,28 @@ router.post('/register', (req, res, next) => {
   const email = req.body.email;
   const firstName = req.body.firstName;
   const lastName = req.body.lastName;
-  const queryText = `INSERT INTO "user" (username, password, email, first_name, last_name)
+  // const firstMotivation = req.body.firstMotivation;
+  // const firstBlessing = req.body.firstBlessing;
+  const userQuery = `INSERT INTO "user" (username, password, email, first_name, last_name)
     VALUES ($1, $2, $3, $4, $5) RETURNING id`;
-  pool
-    .query(queryText, [username, password, email, firstName, lastName])
-    .then(() => res.sendStatus(201))
-    .catch((err) => {
-      console.log('User registration failed: ', err);
+  // const motoQuery = `INSERT INTO "motivations" (user_id, motivation)
+  //   VALUES ($1, $2);`;
+  // const blessingQuery = `INSERT INTO "blessings" (user_id, blessing)
+  //   VALUES ($1, $2);`;
+  pool.query(userQuery, [username, password, email, firstName, lastName])
+    .then(() => {
+      res.sendStatus(201);
+    })
+    .catch(err => {
+      console.log('User registration failed on motivation', err);
       res.sendStatus(500);
-    });
-});
+    })
+
+  .catch((err) => {
+    console.log('User registration failed on user info: ', err);
+    res.sendStatus(500);
+  });
+})
 
 // Handles login form authenticate/login POST
 // userStrategy.authenticate('local') is middleware that we run on this route

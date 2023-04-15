@@ -7,6 +7,8 @@ function RegisterForm() {
   const [email, setEmail] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
+  const [firstMotivation, setFirstMotivation] = useState('');
+  const [firstBlessing, setFirstBlessing] = useState('');
   const errors = useSelector((store) => store.errors);
   const dispatch = useDispatch();
 
@@ -20,7 +22,9 @@ function RegisterForm() {
         password: password,
         email,
         firstName,
-        lastName
+        lastName,
+        firstMotivation,
+        firstBlessing
       },
     });
   }; // end registerUser
@@ -90,6 +94,30 @@ function RegisterForm() {
             value={lastName}
             required
             onChange={(event) => setLastName(event.target.value)}
+          />
+        </label>
+      </div>
+      <div>
+        <label htmlFor="firstMotivation">
+          Enter one thing that gives you motivation to create your new habits:
+          <input
+            type="text"
+            name="firstMotivation"
+            value={firstMotivation}
+            required
+            onChange={(event) => setFirstMotivation(event.target.value)}
+          />
+        </label>
+      </div>
+      <div>
+        <label htmlFor="firstBlessing">
+          Name one thing in your life that you are appreciative of:
+          <input
+            type="text"
+            name="firstBlessing"
+            value={firstBlessing}
+            required
+            onChange={(event) => setFirstBlessing(event.target.value)}
           />
         </label>
       </div>
