@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 function MotoForm(){
@@ -12,7 +12,7 @@ function MotoForm(){
     const handleMotivationChange = event => {
         // update motivation
         setMotivation(event.target.value);
-        console.log(motivation);
+        // console.log(motivation);
     }
 
     // runs on form submission
@@ -26,6 +26,7 @@ function MotoForm(){
         setMotivation('');
     }
     return (
+        // new motivation form
         <form onSubmit={addMotivation}>
         <h4>Add a motivation</h4>
         <input

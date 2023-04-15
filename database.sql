@@ -68,4 +68,6 @@ CREATE TABLE "habits" (
 SELECT * FROM motivations
 WHERE user_id = 2;
 
-
+-- sample POST
+INSERT INTO motivations (user_id, motivation)
+VALUES (5, 'to be the biggest beast');
