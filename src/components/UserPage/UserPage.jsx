@@ -4,7 +4,12 @@ import {useSelector} from 'react-redux';
 
 function UserPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
+  // get user info from store
   const user = useSelector((store) => store.user);
+  // const habits = useSelector(store => store.habits);
+  // const motivations = useSelector(store => store.motivations);
+  // const blessings = useSelector(store => store.blessings);
+  
   return (
     <div className="container">
       <h2>Welcome, {user.username}!</h2>
