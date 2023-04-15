@@ -9,7 +9,10 @@ function MotoBlessing(){
 const user = useSelector(store => store.user);
 // get motivations from the store
 const motivations = useSelector(store => store.motivations);
-console.log('motivations from MotoBlessings component:', motivations);
+
+// get blessings from the store
+const blessings = useSelector(store => store.blessings);
+console.log('blessings from MotoBlessings component:', blessings);
 
 // declare dispatch
 const dispatch = useDispatch();
@@ -19,6 +22,10 @@ const dispatch = useDispatch();
 useEffect(() => {
     dispatch({
         type: 'FETCH_MOTIVATIONS',
+        payload: user.id
+    })
+    dispatch({
+        type: 'FETCH_BLESSINGS',
         payload: user.id
     })
 }, [])
