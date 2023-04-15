@@ -8,8 +8,8 @@ function MotoBlessing(){
 // get user data from the store
 const user = useSelector(store => store.user);
 // get motivations from the store
-// const motivations = useSelector(store => store.motivations);
-// console.log(motivations);
+const motivations = useSelector(store => store.motivations);
+console.log('motivations from MotoBlessings component:', motivations);
 
 // declare dispatch
 const dispatch = useDispatch();
