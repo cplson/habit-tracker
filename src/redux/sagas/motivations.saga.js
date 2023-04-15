@@ -14,7 +14,7 @@ const fetchMotivations = (action) => {
     }
 }
 
-// parent saga
+// parent generator function saga
 function* motivationsSaga(){
     yield takeLatest('FETCH_MOTIVATIONS', fetchMotivations);
 }
