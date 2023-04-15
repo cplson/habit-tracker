@@ -98,30 +98,6 @@ function RegisterForm() {
         </label>
       </div>
       <div>
-        <label htmlFor="firstMotivation">
-          Enter one thing that gives you motivation to create your new habits:
-          <input
-            type="text"
-            name="firstMotivation"
-            value={firstMotivation}
-            required
-            onChange={(event) => setFirstMotivation(event.target.value)}
-          />
-        </label>
-      </div>
-      <div>
-        <label htmlFor="firstBlessing">
-          Name one thing in your life that you are appreciative of:
-          <input
-            type="text"
-            name="firstBlessing"
-            value={firstBlessing}
-            required
-            onChange={(event) => setFirstBlessing(event.target.value)}
-          />
-        </label>
-      </div>
-      <div>
         <input className="btn" type="submit" name="submit" value="Register" />
       </div>
     </form>
