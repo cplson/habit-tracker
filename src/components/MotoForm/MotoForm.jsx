@@ -12,7 +12,7 @@ function MotoForm(){
     const handleMotivationChange = event => {
         // update motivation
         setMotivation(event.target.value);
-        // console.log(motivation);
+        //console.log(motivation);
     }
 
     // runs on form submission
@@ -20,7 +20,7 @@ function MotoForm(){
         // send dispatch to motivations saga
         dispatch({
             type: 'ADD_MOTIVATION',
-            payload: motivation
+            payload: {motivation}
         })
         // clear input field
         setMotivation('');

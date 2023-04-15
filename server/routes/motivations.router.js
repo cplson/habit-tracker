@@ -27,10 +27,10 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 // only if they are logged into the application
 router.post('/', rejectUnauthenticated, (req, res) => {
     const userId = req.user.id;
-    const motivation = req.body.motivation
+    const motivation = req.body.motivation;
     const queryText = `INSERT INTO motivations (user_id, motivation)
     VALUES ($1, $2);`;
-    console.log('triggered motivations POST route', userId);
+    console.log('triggered motivations POST route', userId, req.body);
     // POST route code here
     pool.query(queryText, [userId, motivation])
         .then(result => {
