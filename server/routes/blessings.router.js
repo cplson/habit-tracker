@@ -25,8 +25,23 @@ router.get('/',rejectUnauthenticated, (req, res) => {
 });
 
 
-router.post('/', (req, res) => {
-  // POST route code here
+// POST adds a new motivation to the motivations table
+// only if they are logged into the application
+router.post('/', rejectUnauthenticated, (req, res) => {
+    const userId = req.user.id;
+    const blessing = req.body.blessing;
+    const queryText = `INSERT INTO blessings (user_id, blessing)
+    VALUES ($1, $2);`;
+    console.log('triggered blessings POST route', userId, req.body);
+    // POST route code here
+    pool.query(queryText, [userId, blessing])
+        .then(result => {
+            res.sendStatus(201)
+        }
+        ).catch(err => {
+            console.log('there was an error posting blessing to the db', err);
+            res.sendStatus(500);
+        })
 });
 
 module.exports = router;
