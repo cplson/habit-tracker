@@ -9,5 +9,11 @@ CREATE TABLE "user" (
     "password" VARCHAR (1000) NOT NULL
 );
 
+-- GET all user habits
 SELECT * FROM habits
 WHERE user_id = 2;
+
+-- GET habit log for selected habit
+SELECT * FROM habit_log
+JOIN habits ON habit_log.habit_id = habits.id
+WHERE habits.id = 2;
