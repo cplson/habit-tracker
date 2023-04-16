@@ -10,7 +10,7 @@ function HabitsList(){
         dispatch({
             type: 'FETCH_HABITS'
         })
-    })
+    }, [])
     return 'yay';
 }
 
