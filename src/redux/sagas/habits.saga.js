@@ -12,6 +12,7 @@ function* fetchHabits(action){
     }
 }
 
+//TO DO: POST addHabit
 function* addHabit(action){
     try{
         // axios POST
