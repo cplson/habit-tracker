@@ -11,6 +11,7 @@ function UserPage() {
   // const habits = useSelector(store => store.habits);
   // const motivations = useSelector(store => store.motivations);
   // const blessings = useSelector(store => store.blessings);
+  // const habitLog = useSelector(store => habitLog);
 
   return (
     <div className="container">
