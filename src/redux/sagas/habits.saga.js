@@ -2,7 +2,14 @@ import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
 function* fetchHabits(action){
-    console.log('triggered fetchHabits()');
+    // console.log('triggered fetchHabits()');
+    try{
+        const habits = yield axios.get('/api/habits');
+        // console.log('recieved from db:', habits);
+        yield put({type: 'SET_HABITS', payload: habits.data});
+    }catch(err){
+        console.log('error getting habits from server', err);
+    }
 }
 
 function* addHabit(action){
