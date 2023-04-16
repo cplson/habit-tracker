@@ -21,7 +21,7 @@ function* addToLog(action){
     }
 }
 
-function* habitsSaga(){
+function* habitLogSaga(){
     // listens for dispatch to fetch the updated habit log
     // from the db
     yield takeLatest('FETCH_LOG', fetchHabitLog);
@@ -31,4 +31,4 @@ function* habitsSaga(){
     yield takeLatest('ADD_TO_LOG', addToLog);
 }
 
-export default habitsSaga;
+export default habitLogSaga;
