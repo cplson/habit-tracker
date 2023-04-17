@@ -16,7 +16,7 @@ function HabitsList() {
             {
                 habits.length > 0 ?
                     <ul>
-                        {habits.map(habit => <li key={habit.id}>{habit.description}</li>)}
+                        {habits.map(habit => <li key={habit.id}><button>{habit.description}</button></li>)}
                     </ul>
                     :
                     <p>You do not yet have any habits</p>
