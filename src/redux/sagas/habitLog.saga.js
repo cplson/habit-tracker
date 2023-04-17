@@ -14,6 +14,7 @@ function* fetchHabitLog(action){
 }
 
 function* addToLog(action){
+    console.log('triggered addToLog()', action.payload);
     try{
         // axios POST
         // yield fetch habits
