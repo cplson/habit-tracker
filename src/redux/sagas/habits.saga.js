@@ -23,6 +23,16 @@ function* addHabit(action){
     }
 }
 
+function* deleteHabit(action){
+    console.log('triggered deleteHabit()', action.payload);
+    // try{
+    //     yield axios.delete(`/api/habits/${action.payload.id}`);
+    //     yield put({type: 'FETCH_HABITS'});
+    // }catch(err){
+    //     console.log('there was an issue while trying to delete habit from db', err);
+    // }
+}
+
 function* habitsSaga(){
     // listens for dispatch to fetch the updated habits
     // from the db
@@ -31,6 +41,10 @@ function* habitsSaga(){
     // listens for dispatch to add
     // a new habit to the habits table
     yield takeLatest('ADD_HABIT', addHabit);
+
+    // listens for dispatch to delete
+    // a habit from the habits table
+    yield takeLatest('DELETE_HABIT', deleteHabit);
 }
 
 export default habitsSaga;

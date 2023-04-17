@@ -44,4 +44,19 @@ router.post('/', rejectUnauthenticated, (req, res) => {
     })
 });
 
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
+  const habitId = req.params.id,
+        userId = req.user.id,
+        queryText = `DELETE FROM habits
+        WHERE id=$1 AND user_id = $2;`
+
+  pool.query(queryText, [habitId, userId])
+    .then(result => {
+      res.sendStatus(200);
+    }).catch(err => {
+      console.log('there was an error deleting habit from db', err);
+      res.sendStatus(500);
+    })
+})
+
 module.exports = router;

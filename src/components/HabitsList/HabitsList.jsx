@@ -14,13 +14,21 @@ function HabitsList() {
             type: 'FETCH_HABITS'
         })
     }, [])
+
     return (
         <>
             <HabitForm />
             {
                 habits.length > 0 ?
                     <ul>
-                        {habits.map(habit => <li key={habit.id}>{habit.description} <Button><DeleteForeverIcon /></Button></li>)}
+                        {habits.map(habit =>
+                            <li key={habit.id}>
+                                {habit.description}
+                                <Button onClick={() => 
+                                    dispatch({ type: 'DELETE_HABIT', payload: habit })}>
+                                        <DeleteForeverIcon />
+                                </Button>
+                            </li>)}
                     </ul>
                     :
                     <p>You do not yet have any habits</p>

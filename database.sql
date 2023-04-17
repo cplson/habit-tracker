@@ -15,3 +15,7 @@ WHERE user_id = 2;
 -- POST new habit
 INSERT INTO habits (user_id, description)
 VALUES (2, 'sample');
+
+-- DELETE habit
+DELETE FROM habits
+WHERE id=5 AND user_id = 2;
