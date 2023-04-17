@@ -24,3 +24,7 @@ WHERE id=5 AND user_id = 2;
 SELECT habit_log.id, status, notes FROM habit_log
 JOIN habits ON habit_log.habit_id = habits.id
 WHERE habits.id = 2;
+
+-- TEMPORARY POST new habit log entry
+INSERT INTO habit_log (habit_id, date, status, notes)
+VALUES (2, 'April 12, 2023', 'D', 'D');
