@@ -29,7 +29,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
 });
 
 /**
- * POST route template
+ * POST new log entry
  */
 router.post('/', rejectUnauthenticated, (req, res) => {
   // POST route code here
@@ -45,6 +45,28 @@ router.post('/', rejectUnauthenticated, (req, res) => {
       res.sendStatus(201);
     }).catch(err => {
       console.log('there was an issue posting new log info to db');
+      res.sendStatus(500);
+    })
+});
+
+/**
+ * PUT edit existing log entry
+ */
+router.put('/:id', rejectUnauthenticated, (req, res) => {
+  const logId = req.params.id,
+        status = req.body.status,
+        notes = req.body.notes,
+        queryText = `UPDATE habit_log
+        SET status = $1,
+          notes = $2
+        WHERE id = $3;`;
+  
+  pool.query(queryText, [status, notes, logId])
+    .then(result => {
+      console.log('updated log entry in server');
+      res.sendStatus(200);
+    }).catch(err => {
+      console.log('There was a problem editing log entry', err);
       res.sendStatus(500);
     })
 });

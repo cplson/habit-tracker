@@ -28,3 +28,9 @@ WHERE habits.id = 2;
 -- TEMPORARY POST new habit log entry
 INSERT INTO habit_log (habit_id, date, status, notes)
 VALUES (2, 'April 12, 2023', 'D', 'D');
+
+-- TEMPORARY PUT edit existing habit log entry
+UPDATE habit_log
+SET status = 'unsuccessful',
+	notes = 'no problem'
+WHERE id = 1; 

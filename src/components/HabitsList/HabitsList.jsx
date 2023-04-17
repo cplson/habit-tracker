@@ -113,7 +113,7 @@ function HabitsList() {
                         {habitLog.map(day =>
                             <li key={day.notes}>
                                 <Button onClick={() =>
-                                    dispatch({ type: 'EDIT_LOG_ENTRY', payload: day.id })}><EditIcon fontSize='small' />
+                                    dispatch({ type: 'EDIT_LOG_ENTRY', payload: day })}><EditIcon fontSize='small' />
                                 </Button>
                                 Date: {day.date} Status: {day.status} Note: {day.notes}
                             </li>)}
