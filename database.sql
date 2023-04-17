@@ -9,9 +9,11 @@ CREATE TABLE "user" (
     "password" VARCHAR (1000) NOT NULL
 );
 
+-- GET all user habits
 SELECT * FROM habits
 WHERE user_id = 2;
 
+<<<<<<< HEAD
 -- POST new habit
 INSERT INTO habits (user_id, description)
 VALUES (2, 'sample');
@@ -19,3 +21,9 @@ VALUES (2, 'sample');
 -- DELETE habit
 DELETE FROM habits
 WHERE id=5 AND user_id = 2;
+=======
+-- GET habit log for selected habit
+SELECT * FROM habit_log
+JOIN habits ON habit_log.habit_id = habits.id
+WHERE habits.id = 2;
+>>>>>>> feature-habit-log

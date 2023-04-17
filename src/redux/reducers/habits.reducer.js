@@ -7,6 +7,6 @@ const habitsReducer = (state = [], action) => {
     }
   };
   
-  // user will be on the redux state at:
-  // state.user
+  // habitList will be on the redux state at:
+  // state.habits
   export default habitsReducer;
