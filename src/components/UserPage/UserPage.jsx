@@ -18,6 +18,7 @@ function UserPage() {
       <div>
         <Calendar />
       </div>
+      
       <LogOutButton className="btn" />
       <HabitsList />
     </div>
