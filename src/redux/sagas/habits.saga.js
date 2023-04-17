@@ -13,8 +13,10 @@ function* fetchHabits(action){
 }
 
 function* addHabit(action){
+    console.log('triggered addHabit()', action.payload);
     try{
         // axios POST
+        
         // yield fetch habits
     }catch(err){
         console.log('there was an issue adding the habit to the db', err);
