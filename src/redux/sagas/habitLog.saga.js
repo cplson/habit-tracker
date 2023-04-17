@@ -4,7 +4,7 @@ import axios from 'axios';
 function* fetchHabitLog(action){
     // console.log('triggered fetchHabitLog()', action.payload);
     try{
-        const habitLog = yield axios.get(`/api/habitLog/${action.payload.id}`);
+        const habitLog = yield axios.get(`/api/habit-log/${action.payload.id}`);
         console.log('habitLog in fetchHabitLog:', habitLog);
         // console.log('recieved from db:', habitLog);
         yield put({type: 'SET_LOG', payload: habitLog.data});
@@ -17,7 +17,9 @@ function* addToLog(action){
     console.log('triggered addToLog()', action.payload);
     try{
         // axios POST
-        // yield fetch habits
+        yield axios.post('/api/habit-log', action.payload);
+        // yield fetch log
+        yield({type: 'FETCH_LOG'});
     }catch(err){
         console.log('there was an issue adding date to log to the db', err);
     }
