@@ -25,6 +25,15 @@ function* addToLog(action){
     }
 }
 
+function* editLogEntry(action){
+    console.log('triggered editLogEntry()', action.payload);
+    try{
+        // put request
+        // put dispatch
+    }catch(err){
+        console.log('there was an issue attempting to edit the habit log in the db', err);
+    }
+}
 function* habitLogSaga(){
     // listens for dispatch to fetch the updated habit log
     // from the db
@@ -33,6 +42,10 @@ function* habitLogSaga(){
     // listens for dispatch to add
     // a new date to the habit log
     yield takeLatest('ADD_TO_LOG', addToLog);
+
+    // listens for dispatch to edit
+    // an entry in the habit log
+    yield takeLatest('EDIT_LOG_ENTRY', editLogEntry)
 }
 
 export default habitLogSaga;
