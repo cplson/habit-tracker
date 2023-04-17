@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import HabitForm from '../HabitForm/HabitForm';
 function HabitsList() {
     // get habits from the store
     const habits = useSelector(store => store.habits);
@@ -13,6 +14,7 @@ function HabitsList() {
     }, [])
     return (
         <>
+            <HabitForm />
             {
                 habits.length > 0 ?
                     <ul>
