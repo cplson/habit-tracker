@@ -27,8 +27,21 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 /**
  * POST route template
  */
-router.post('/', (req, res) => {
+router.post('/', rejectUnauthenticated, (req, res) => {
   // POST route code here
+  const userId = req.user.id,
+        description = req.body.description,
+        queryText = `INSERT INTO habits (user_id, description)
+        VALUES ($1, $2);`;
+
+  pool.query(queryText, [userId, description])
+    .then(result => {
+      console.log('posted habit to db');
+      res.sendStatus(201);
+    }).catch(err => {
+      console.log('There was an issue posting new habit to the db', err);
+      res.sendStatus(500);
+    })
 });
 
 module.exports = router;

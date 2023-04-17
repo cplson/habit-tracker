@@ -11,3 +11,7 @@ CREATE TABLE "user" (
 
 SELECT * FROM habits
 WHERE user_id = 2;
+
+-- POST new habit
+INSERT INTO habits (user_id, description)
+VALUES (2, 'sample');
