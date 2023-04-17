@@ -27,8 +27,13 @@ function* addHabit(action){
 function* deleteHabit(action){
     console.log('triggered deleteHabit()', action.payload);
     try{
+        // delete habit logs related to this habit and update store
+        yield axios.delete(`/api/habit-log/${action.payload.id}`)
+        yield put({type: 'FETCH_LOG'})
+        // delete habit and update store
         yield axios.delete(`/api/habits/${action.payload.id}`);
         yield put({type: 'FETCH_HABITS'});
+        
     }catch(err){
         console.log('there was an issue while trying to delete habit from db', err);
     }
