@@ -20,7 +20,7 @@ function HabitForm() {
         <form onSubmit={handleSubmit}>
             <div>
                 <label htmlFor="description">
-                    Username:
+                    New habit:
                     <input
                         type="text"
                         name="description"

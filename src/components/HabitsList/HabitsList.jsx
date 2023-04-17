@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import HabitForm from '../HabitForm/HabitForm';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import Button from '@mui/material/Button';
+import EditIcon from '@mui/icons-material/Edit';
 function HabitsList() {
     // get habits from the store
     const habits = useSelector(store => store.habits);
@@ -108,7 +109,7 @@ function HabitsList() {
             {
                 habitLog.length > 0 ?
                     <ul>
-                        {habitLog.map(day => <li key={day.notes}>Date: {day.date} Status: {day.status} Note: {day.notes}</li>)}
+                        {habitLog.map(day => <li key={day.notes}><Button><EditIcon fontSize='small'/></Button> Date: {day.date} Status: {day.status} Note: {day.notes} </li>)}
                     </ul>
                 :
                 <p>no history recorded for this habit yet.</p>
