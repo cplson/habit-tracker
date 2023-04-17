@@ -1,7 +1,7 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
-function* fetchHabits(action){
+function* fetchHabits(){
     // console.log('triggered fetchHabits()');
     try{
         const habits = yield axios.get('/api/habits');
@@ -13,11 +13,11 @@ function* fetchHabits(action){
 }
 
 function* addHabit(action){
-    console.log('triggered addHabit()', action.payload);
     try{
         // axios POST
-        
+        yield axios.post('/api/habits', action.payload);
         // yield fetch habits
+        yield put({type: 'FETCH_HABITS'})
     }catch(err){
         console.log('there was an issue adding the habit to the db', err);
     }
