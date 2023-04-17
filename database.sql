@@ -34,3 +34,7 @@ UPDATE habit_log
 SET status = 'unsuccessful',
 	notes = 'no problem'
 WHERE id = 1; 
+
+-- TEMPORARY DELETE habit logs for a habit that is to be deleted
+DELETE FROM habit_log
+WHERE habit_id = 1;
