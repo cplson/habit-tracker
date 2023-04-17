@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import HabitForm from '../HabitForm/HabitForm';
+import EditLog from '../EditLog/EditLog'
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import Button from '@mui/material/Button';
 import EditIcon from '@mui/icons-material/Edit';
@@ -121,6 +122,7 @@ function HabitsList() {
                     :
                     <p>no history recorded for this habit yet.</p>
             }
+            <EditLog />
         </>
     );
 }

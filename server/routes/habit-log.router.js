@@ -60,7 +60,7 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
         SET status = $1,
           notes = $2
         WHERE id = $3;`;
-  
+        console.log(logId, status, notes);
   pool.query(queryText, [status, notes, logId])
     .then(result => {
       console.log('updated log entry in server');

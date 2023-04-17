@@ -28,8 +28,10 @@ function* addToLog(action){
 function* editLogEntry(action){
     console.log('triggered editLogEntry()', action.payload);
     try{
-        // put request
+        // PUT request
+        yield axios.put(`/api/habit-log/${action.payload.id}`, action.payload)
         // put dispatch
+        yield put({type: 'FETCH_LOG'});
     }catch(err){
         console.log('there was an issue attempting to edit the habit log in the db', err);
     }
