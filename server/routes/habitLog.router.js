@@ -8,12 +8,15 @@ const {
 /**
  * GET habit log
  */
-router.get('/', rejectUnauthenticated, (req, res) => {
+router.get('/:id', rejectUnauthenticated, (req, res) => {
   // GET route code here
-  const habitId = req.body.habitId;
-  const queryText = `SELECT * FROM habit_log
+  console.log('req.body:', req.params.id);
+  const habitId = req.params.id;
+  const queryText = `SELECT habit_log.id, status, notes 
+  FROM habit_log
   JOIN habits ON habit_log.habit_id = habits.id
   WHERE habits.id = $1;`
+  console.log('habitId', habitId);
 
   pool.query(queryText, [habitId])
     .then(result => {

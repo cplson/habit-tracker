@@ -2,6 +2,8 @@ const habitLogReducer = (state = [], action) => {
     switch (action.type) {
       case 'SET_LOG':
         return action.payload;
+      case 'CLEAR_LOG':
+        return [];
       default:
         return state;
     }

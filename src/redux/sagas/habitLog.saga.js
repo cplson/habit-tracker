@@ -2,14 +2,15 @@ import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
 function* fetchHabitLog(action){
-    console.log('triggered fetchHabitLog()');
-    // try{
-    //     const habitLog = yield axios.get('/api/habitLog');
-    //     // console.log('recieved from db:', habitLog);
-    //     yield put({type: 'SET_LOG', payload: habitLog.data});
-    // }catch(err){
-    //     console.log('error getting habitLog from server', err);
-    // }
+    // console.log('triggered fetchHabitLog()', action.payload);
+    try{
+        const habitLog = yield axios.get(`/api/habitLog/${action.payload.id}`);
+        console.log('habitLog in fetchHabitLog:', habitLog);
+        // console.log('recieved from db:', habitLog);
+        yield put({type: 'SET_LOG', payload: habitLog.data});
+    }catch(err){
+        console.log('error getting habitLog from server', err);
+    }
 }
 
 function* addToLog(action){
