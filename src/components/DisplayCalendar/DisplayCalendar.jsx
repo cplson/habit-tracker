@@ -8,13 +8,19 @@ import Calendar from 'react-calendar';
 import '../DisplayCalendar/Calendar.css';
 import { DateTime } from "luxon";
 
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+
 function DisplayCalendar() {
     // local state
-    let [allNotesIsVisible, setNotesVis] = useState(true),
-        [dateFormIsVisible, setFormVis] = useState(false),
+    let [visibility, toggleVis] = useState(true),
         [isPut, setPut] = useState(false),
         [dateClicked, setDateClicked] = useState(new Date());
-        console.log(dateClicked);
+
 
     // store
     const habitLog = useSelector(store => store.habitLog);
@@ -25,7 +31,7 @@ function DisplayCalendar() {
     // declare dispatch
     const dispatch = useDispatch();
 
-    
+
 
     useEffect(() => {
         dispatch({ type: 'FETCH_LOG', payload: user });
@@ -39,22 +45,48 @@ function DisplayCalendar() {
         let newDT = new DateTime.fromISO(tempDate.toISOString())
         // set the local state 'dateClicked' to the desired format
         setDateClicked(newDT.toFormat('MMMM dd, yyyy'));
-        
+
+        // TO DO: A LOT
+
+        // habitLog.forEach(log => {
+        //     if(log.date === dateClicked){
+        //         setPut(true);
+        //     }
+        //     else{
+        //         setPut(false)
+        //     }
+        //     setNotesVis(false);
+        //     setFormVis(true);
+        //     console.log(log.date, dateClicked);
+        // })
+
+        // console.log('if 10 or 16 expected output is true', isPut);
         // check if date is in the store
         // - if yes -> isPut = true
         //      else -> dateFormisVisible -> true
-        
+
     }
     return (
         <div className='flex-container'>
-            <Calendar isPut={isPut} dateFormIsVisible={dateFormIsVisible} calendarType='US'
-                onChange={dayClick}/>
+            <Calendar isPut={isPut} calendarType='US'
+                onChange={dayClick} />
             <div id='notesContainer'>
-                <div>
-                    <h3>All Notes</h3>
-                    <NotesList allNotesIsVisible={allNotesIsVisible} isPut={isPut}/>
-                    <DateForm isPut={isPut} />
-                </div>
+                <Card variant="outlined">
+                    <CardContent>
+
+                        {/* conditionally render NotesList or DateForm based on local state */}
+                        {visibility ?
+                            <div>
+
+                                <Typography>
+                                    <h3>All Notes</h3>
+                                </Typography>
+                                <NotesList isPut={isPut} toggleVis={toggleVis} />
+                            </div> :
+                            <DateForm isPut={isPut} toggleVis={toggleVis} />}
+                    </CardContent>
+                </Card>
+
 
             </div>
         </div>

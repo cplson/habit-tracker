@@ -1,7 +1,7 @@
 import Button from '@mui/material/Button';
 
 
-function NotesList({ allNotesIsVisible, isPut }) {
+function NotesList({ isPut, toggleVis }) {
 
     
     // sample data
@@ -10,7 +10,7 @@ function NotesList({ allNotesIsVisible, isPut }) {
     return (
         <ul>
             {sampleNotes.map((note, i) =>
-                <li key={i} className='noteList'><Button>{note}</Button></li>
+                <li key={i} className='noteList'><Button onClick={() => toggleVis(false)}>{note}</Button></li>
             )}
         </ul>
     );

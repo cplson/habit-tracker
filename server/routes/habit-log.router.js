@@ -12,7 +12,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
   // GET route code here
   console.log('req.body:', req.params.id);
   const habitId = req.params.id;
-  const queryText = `SELECT habit_log.id, status, notes 
+  const queryText = `SELECT habit_log.id, date, status, notes 
   FROM habit_log
   JOIN habits ON habit_log.habit_id = habits.id
   WHERE habits.id = $1;`
