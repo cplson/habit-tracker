@@ -6,14 +6,15 @@ import DateForm from '../DateForm/DateForm';
 
 import Calendar from 'react-calendar';
 import '../DisplayCalendar/Calendar.css';
+import { DateTime } from "luxon";
 
 function DisplayCalendar() {
     // local state
     let [allNotesIsVisible, setNotesVis] = useState(true),
         [dateFormIsVisible, setFormVis] = useState(false),
         [isPut, setPut] = useState(false),
-        [dateClicked, setDateClicked] = useState({});
-
+        [dateClicked, setDateClicked] = useState(new Date());
+        console.log(dateClicked);
 
     // store
     const habitLog = useSelector(store => store.habitLog);
@@ -31,17 +32,23 @@ function DisplayCalendar() {
         // console.log('current habit after FETCH_CURRENT_HABIT dispatch', currentHabit);
     }, [])
 
-    const dayClick = (value, event) => {
+    const dayClick = (value) => {
+        // set temp date needed to transfer to DateTime
+        let tempDate = new Date(value.toISOString());
+        // temp DateTime object that will be used to set the local state
+        let newDT = new DateTime.fromISO(tempDate.toISOString())
+        // set the local state 'dateClicked' to the desired format
+        setDateClicked(newDT.toFormat('MMMM dd, yyyy'));
+        
         // check if date is in the store
         // - if yes -> isPut = true
         //      else -> dateFormisVisible -> true
-        console.log(value);
-        return alert('Clicked day: ', value);
+        
     }
     return (
         <div className='flex-container'>
             <Calendar isPut={isPut} dateFormIsVisible={dateFormIsVisible} calendarType='US'
-                onClickDay={dayClick} />
+                onChange={dayClick}/>
             <div id='notesContainer'>
                 <div>
                     <h3>All Notes</h3>
