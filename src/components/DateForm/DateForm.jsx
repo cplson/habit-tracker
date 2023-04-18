@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Button from '@mui/material/Button';
 
 
-function DateForm({isPut, toggleVis}){
+function DateForm({ isPut}){
 
     // store
     const habitLog = useSelector(store => store.habitLog);
@@ -14,22 +14,15 @@ function DateForm({isPut, toggleVis}){
         // else(
         //     // POST dispatch
         // )
+        
     }
-    return <Button onClick={() => toggleVis(true)}>sheesh</Button>;
-    // return(
-    //     <form onSubmit={handleSubmit}>
-    //         <label htmlFor="date">
-    //                 New habit:
-    //                 <input
-    //                     type="date"
-    //                     name="description"
-    //                     value={description}
-    //                     required
-    //                     onChange={(event) => setDescription(event.target.value)}
-    //                 />
-    //             </label>
-    //     </form>
-    // )
+    
+    return(
+        <form onSubmit={handleSubmit}>
+            <label htmlFor="date"></label>
+    <Button type='submit'>Submit</Button>;
+        </form>
+    )
 }
 
 export default DateForm;

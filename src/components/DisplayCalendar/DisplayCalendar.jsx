@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import NotesList from '../NotesList/NotesList';
 import DateForm from '../DateForm/DateForm';
+import PostModal from '../PostModal/PostModal';
 
 import Calendar from 'react-calendar';
 import '../DisplayCalendar/Calendar.css';
@@ -14,10 +15,11 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
 
 function DisplayCalendar() {
     // local state
-    let [visibility, toggleVis] = useState(true),
+    let [visibility, toggleVis] = useState(false),
         [isPut, setPut] = useState(false),
         [dateClicked, setDateClicked] = useState(new Date());
 
@@ -38,6 +40,8 @@ function DisplayCalendar() {
         // console.log('current habit after FETCH_CURRENT_HABIT dispatch', currentHabit);
     }, [])
 
+
+
     const dayClick = (value) => {
         // set temp date needed to transfer to DateTime
         let tempDate = new Date(value.toISOString());
@@ -45,7 +49,7 @@ function DisplayCalendar() {
         let newDT = new DateTime.fromISO(tempDate.toISOString())
         // set the local state 'dateClicked' to the desired format
         setDateClicked(newDT.toFormat('MMMM dd, yyyy'));
-
+        toggleVis(true);
         // TO DO: A LOT
 
         // habitLog.forEach(log => {
@@ -64,26 +68,29 @@ function DisplayCalendar() {
         // check if date is in the store
         // - if yes -> isPut = true
         //      else -> dateFormisVisible -> true
-
+        console.log('here');
+        
     }
+
+    
     return (
         <div className='flex-container'>
             <Calendar isPut={isPut} calendarType='US'
-                onChange={dayClick} />
+                onChange={dayClick}/>
+                
             <div id='notesContainer'>
                 <Card variant="outlined">
                     <CardContent>
-
-                        {/* conditionally render NotesList or DateForm based on local state */}
-                        {visibility ?
+                        {/* conditionally render PostModal */}
+                        {visibility && <PostModal toggleVis={toggleVis}/>}
                             <div>
 
                                 <Typography>
                                     <h3>All Notes</h3>
                                 </Typography>
-                                <NotesList isPut={isPut} toggleVis={toggleVis} />
-                            </div> :
-                            <DateForm isPut={isPut} toggleVis={toggleVis} />}
+                                <NotesList isPut={isPut} />
+                            </div> 
+                            
                     </CardContent>
                 </Card>
 
