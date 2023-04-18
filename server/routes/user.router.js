@@ -61,4 +61,22 @@ router.post('/logout', (req, res) => {
   res.sendStatus(200);
 });
 
+router.put('/:id', rejectUnauthenticated, (req, res) => {
+  const userId = req.user.id,
+        activeHabitId = req.params.id,
+        queryText = `UPDATE "user"
+        SET active_habit_id = $2
+        WHERE "user".id = $1;`;
+
+  pool.query(queryText, [userId, activeHabitId])
+    .then(result => {
+      res.sendStatus(200);
+    }).catch(err => {
+      console.log(err => {
+        console.log('there was an issue updating active habit id', err);
+        res.sendStatus(500);
+      })
+    })
+})
+
 module.exports = router;

@@ -9,6 +9,11 @@ CREATE TABLE "user" (
     "password" VARCHAR (1000) NOT NULL
 );
 
+-- PUT edit active habit
+UPDATE "user"
+SET active_habit_id = 14
+WHERE "user".id = 1;
+
 -- GET all user habits
 SELECT * FROM habits
 WHERE user_id = 2;

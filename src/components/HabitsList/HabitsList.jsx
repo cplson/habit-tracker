@@ -5,6 +5,7 @@ import EditLog from '../EditLog/EditLog'
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import Button from '@mui/material/Button';
 import EditIcon from '@mui/icons-material/Edit';
+import { useHistory } from 'react-router-dom';
 function HabitsList() {
     // get habits from the store
     const habits = useSelector(store => store.habits);
@@ -16,6 +17,8 @@ function HabitsList() {
     let [notes, setNotes] = useState('');
     // declare dispatch
     const dispatch = useDispatch();
+    // declare history
+    const history = useHistory();
 
     useEffect(() => {
         dispatch({
@@ -49,7 +52,12 @@ function HabitsList() {
                         {habits.map(habit =>
                             <li key={habit.id}>
                                 <Button onClick={() =>
-                                    dispatch({ type: 'FETCH_LOG', payload: habit })}>
+                                    <>
+                                        {/* {dispatch({ type: 'FETCH_LOG', payload: habit })} */}
+                                        {dispatch({ type: 'SET_ACTIVE_HABIT', payload: habit })}
+                                        {history.push('/calendar')}
+                                    </>
+                                }>
                                     {habit.description}
 
 

@@ -24,8 +24,19 @@ function* fetchUser() {
   }
 }
 
+function* setActiveHabit(action){
+  console.log('inside setActiveHabit()', action.payload);
+  try{
+    yield axios.put(`/api/user/${action.payload.id}`)
+    yield put({type: 'FETCH_USER'});
+  }catch(err){
+    console.log('error changing active habit', err);
+  }
+}
 function* userSaga() {
   yield takeLatest('FETCH_USER', fetchUser);
+  // sets the active habit for the user
+  yield takeLatest('SET_ACTIVE_HABIT', setActiveHabit);
 }
 
 export default userSaga;
