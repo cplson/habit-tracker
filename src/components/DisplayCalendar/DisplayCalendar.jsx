@@ -69,28 +69,28 @@ function DisplayCalendar() {
         // - if yes -> isPut = true
         //      else -> dateFormisVisible -> true
         console.log('here');
-        
+
     }
 
-    
+
     return (
         <div className='flex-container'>
             <Calendar isPut={isPut} calendarType='US'
-                onChange={dayClick}/>
-                
+                onChange={dayClick} />
+
             <div id='notesContainer'>
                 <Card variant="outlined">
                     <CardContent>
                         {/* conditionally render PostModal */}
-                        {visibility && <PostModal toggleVis={toggleVis}/>}
-                            <div>
+                        {visibility && <PostModal toggleVis={toggleVis} dateClicked={dateClicked} />}
+                        <div>
 
-                                <Typography>
-                                    <h3>All Notes</h3>
-                                </Typography>
-                                <NotesList isPut={isPut} />
-                            </div> 
-                            
+
+                            <h3>All Notes</h3>
+
+                            <NotesList isPut={isPut} />
+                        </div>
+
                     </CardContent>
                 </Card>
 
