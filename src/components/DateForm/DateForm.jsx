@@ -1,33 +1,54 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Button from '@mui/material/Button';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import TextareaAutosize from '@mui/base/TextareaAutosize';
+import { DateTime } from "luxon";
 
 
 
-function DateForm({ isPut, dateClicked }) {
+function DateForm({ dateClicked, dateClickedString={dateClickedString} }) {
 
     // store
     const habitLog = useSelector(store => store.habitLog);
     const habitId = useSelector(store => store.user.active_habit_id);
+
+    // local state
     const [status, setStatus] = useState('');
     const [notes, setNotes] = useState('');
+    const [isPost, setPost] = useState(true);
 
     // dispatch
     const dispatch = useDispatch();
-    let newDate = { habit_id: habitId, date: dateClicked, status: '', notes: '' }
 
+    // local vars
+    let newDate = { habit_id: habitId, date: dateClicked, status: '', notes: '' }
+    let dateTimeClicked;
+    let dtString;
+    // on ready DOM, determine request type
+    useEffect(() => {
+        console.log('dateClicked', dateClicked, dateClicked.toISOString());
+        for(let log of habitLog){
+            if(log.date === dateClicked.toISOString()){
+                console.log('Found a match');
+                setPost(true);
+            }
+            else{
+                setPost(false);
+            }
+            let tempDate = new Date(dateClicked.toISOString());
+            console.log(tempDate);
+            dateTimeClicked = new DateTime.fromISO(dateClicked.toISOString())
+            dtString = dateTimeClicked.toFormat('MMMM dd, yyyy')
+            console.log(dtString);
+            // will probably have to use this dateClicked.toFormat('MMMM dd, yyyy')
+        }   // first need to get dateClicked back to a date not a string
+    }, []);
     const handleSubmit = () => {
-        // if(isPut){
-        //     // PUT dispatch
-        // }
-        // else(
-        //     // POST dispatch
-        // )
+        
 
         newDate.status = status;
         newDate.notes = notes;
@@ -36,6 +57,12 @@ function DateForm({ isPut, dateClicked }) {
             type: 'ADD_TO_LOG',
             payload: newDate
         })
+        // if(isPut){
+        //     // PUT dispatch
+        // }
+        // else(
+        //     // POST dispatch
+        // )
         
         console.log('yay submitted with data:', newDate);
 
@@ -49,7 +76,7 @@ function DateForm({ isPut, dateClicked }) {
     }
     return (
         <div>
-            <h4>{dateClicked}</h4>
+            <h4>{dateClickedString}</h4>
             <form onSubmit={handleSubmit}>
 
                 <FormControl fullWidth>

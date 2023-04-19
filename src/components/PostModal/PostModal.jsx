@@ -1,7 +1,5 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import DateForm from '../DateForm/DateForm';
 
@@ -17,7 +15,7 @@ const style = {
   p: 4,
 };
 
-export default function PostModal({toggleVis, dateClicked}) {
+export default function PostModal({toggleVis, dateClicked, dateClickedString}) {
   const [open, setOpen] = React.useState(true);
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
@@ -34,7 +32,7 @@ export default function PostModal({toggleVis, dateClicked}) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <DateForm dateClicked={dateClicked}/>
+          <DateForm dateClicked={dateClicked} dateClickedString={dateClickedString}/>
         </Box>
       </Modal>
     </div>

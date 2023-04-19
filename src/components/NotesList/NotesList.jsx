@@ -1,7 +1,7 @@
 import Button from '@mui/material/Button';
 
 
-function NotesList({ isPut }) {
+function NotesList() {
 
     
     // sample data
