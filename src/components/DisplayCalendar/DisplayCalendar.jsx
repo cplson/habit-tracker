@@ -21,8 +21,8 @@ function DisplayCalendar() {
     // local state
     let [visibility, toggleVis] = useState(false),
         [dateClicked, setDateClicked] = useState(new Date()),
-        [dateClickedString, setDateClickedString] = useState('');
-
+        [dateClickedString, setDateClickedString] = useState(''),
+        [isPost, setPost] = useState(false);
 
     // store
     const habitLog = useSelector(store => store.habitLog);
@@ -54,6 +54,19 @@ function DisplayCalendar() {
         setDateClickedString(rawDT.toFormat('MMMM dd, yyyy'));
         setDateClicked(new Date(value));
         
+        // console.log('dateClicked', dateClicked, dateClicked.toISOString());
+
+        setPost(false);
+        for(let log of habitLog){
+            console.log( log.date, dateClicked.toISOString());
+
+            if(log.date === dateClicked.toISOString()){
+                console.log('found a match');
+                setPost(true);
+            }   
+        }
+        console.log(isPost);
+
         // display modal 
         toggleVis(true); 
 
@@ -69,7 +82,7 @@ function DisplayCalendar() {
                 <Card variant="outlined">
                     <CardContent>
                         {/* conditionally render PostModal */}
-                        {visibility && <PostModal toggleVis={toggleVis} dateClicked={dateClicked} dateClickedString={dateClickedString}/>}
+                        {visibility && <PostModal toggleVis={toggleVis} dateClicked={dateClicked} dateClickedString={dateClickedString} isPost={isPost}/>}
                         <div>
 
 

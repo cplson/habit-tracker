@@ -10,7 +10,7 @@ import { DateTime } from "luxon";
 
 
 
-function DateForm({ dateClicked, dateClickedString={dateClickedString} }) {
+function DateForm({ dateClicked, dateClickedString, isPost}) {
 
     // store
     const habitLog = useSelector(store => store.habitLog);
@@ -19,49 +19,31 @@ function DateForm({ dateClicked, dateClickedString={dateClickedString} }) {
     // local state
     const [status, setStatus] = useState('');
     const [notes, setNotes] = useState('');
-    const [isPost, setPost] = useState(true);
+    
 
     // dispatch
     const dispatch = useDispatch();
 
     // local vars
     let newDate = { habit_id: habitId, date: dateClicked, status: '', notes: '' }
-    let dateTimeClicked;
-    let dtString;
+    
     // on ready DOM, determine request type
-    useEffect(() => {
-        console.log('dateClicked', dateClicked, dateClicked.toISOString());
-        for(let log of habitLog){
-            if(log.date === dateClicked.toISOString()){
-                console.log('Found a match');
-                setPost(true);
-            }
-            else{
-                setPost(false);
-            }
-            let tempDate = new Date(dateClicked.toISOString());
-            console.log(tempDate);
-            dateTimeClicked = new DateTime.fromISO(dateClicked.toISOString())
-            dtString = dateTimeClicked.toFormat('MMMM dd, yyyy')
-            console.log(dtString);
-            // will probably have to use this dateClicked.toFormat('MMMM dd, yyyy')
-        }   // first need to get dateClicked back to a date not a string
-    }, []);
+    
     const handleSubmit = () => {
         
 
         newDate.status = status;
         newDate.notes = notes;
 
-        dispatch({
-            type: 'ADD_TO_LOG',
-            payload: newDate
-        })
-        // if(isPut){
-        //     // PUT dispatch
-        // }
+        
+        if(isPost){
+            dispatch({
+                type: 'ADD_TO_LOG',
+                payload: newDate
+            })
+        }
         // else(
-        //     // POST dispatch
+            
         // )
         
         console.log('yay submitted with data:', newDate);

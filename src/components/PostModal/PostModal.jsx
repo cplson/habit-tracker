@@ -15,7 +15,7 @@ const style = {
   p: 4,
 };
 
-export default function PostModal({toggleVis, dateClicked, dateClickedString}) {
+export default function PostModal({toggleVis, dateClicked, dateClickedString, isPost}) {
   const [open, setOpen] = React.useState(true);
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
@@ -32,7 +32,7 @@ export default function PostModal({toggleVis, dateClicked, dateClickedString}) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <DateForm dateClicked={dateClicked} dateClickedString={dateClickedString}/>
+          <DateForm dateClicked={dateClicked} dateClickedString={dateClickedString} isPost={isPost}/>
         </Box>
       </Modal>
     </div>
