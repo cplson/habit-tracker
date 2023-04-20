@@ -71,10 +71,33 @@ function DisplayCalendar() {
         toggleVis(true);
     }
 
+    const setContent = (view, date) => {
+        let loggedDate = {};
+            
+            
+        for(let log of habitLog){
+            console.log(date.toISOString(), log.date);
+            if(log.date == date.toISOString()){
+                console.log('found a match');
+                loggedDate = {length: 4, ...log}
+            }     
+        }
+        console.log(loggedDate);
+        // return(
+        //     <>
+        //     {!Array.prototype.includes.call(loggedDate, date.toISOString()) &&
+        //     <p>{loggedDate.notes}</p>}
+        //     </>
+        //     )
+        return <p>{loggedDate.notes}</p>
+    }
+
     return (
         <div className='flex-container'>
             <Calendar calendarType='US'
-                onChange={event => dayClick(event)} />
+                onChange={event => dayClick(event)}
+                tileContent={({view, date}) => setContent(view, date)}
+                 />
 
             <div id='notesContainer'>
                 <Card variant="outlined">
