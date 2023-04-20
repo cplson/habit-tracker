@@ -1,6 +1,8 @@
 import {useState} from 'react';
+import { useSelector } from 'react-redux';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
+import PostForm from '../PostForm/PostForm';
 import PutForm from '../PutForm/PutForm';
 
 const style = {
@@ -15,7 +17,7 @@ const style = {
   p: 4,
 };
 
-export default function PutModal({toggleVis, dateClicked, dateClickedString}) {
+export default function PostModal({toggleVis, dateClicked, dateClickedString, isPut}) {
   const [open, setOpen] = useState(true);
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
@@ -23,6 +25,7 @@ export default function PutModal({toggleVis, dateClicked, dateClickedString}) {
     toggleVis(false);
   }
 
+  const modalState = useSelector(store => store.modalState);
     return (
     <div>
       <Modal
@@ -32,7 +35,11 @@ export default function PutModal({toggleVis, dateClicked, dateClickedString}) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
+          {isPut ?
           <PutForm dateClicked={dateClicked} dateClickedString={dateClickedString}/>
+          :
+          <PostForm dateClicked={dateClicked} dateClickedString={dateClickedString}/>
+        }
         </Box>
       </Modal>
     </div>

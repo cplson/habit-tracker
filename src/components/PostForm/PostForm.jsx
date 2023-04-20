@@ -51,7 +51,8 @@ function PostForm({ dateClicked, dateClickedString }) {
     }
     return (
         <div>
-            <h4>{dateClickedString}</h4>
+            {/* <h4>{dateClickedString}</h4> */}
+            <h4>PostForm</h4>
             <form onSubmit={handleSubmit}>
                 <FormControl fullWidth>
                     <InputLabel id="statusLabel">Status</InputLabel>

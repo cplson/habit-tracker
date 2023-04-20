@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import NotesList from '../NotesList/NotesList';
-import PostModal from '../PostModal/PostModal';
-import PutModal from '../PutModal/PutModal';
+import DateModal from '../DateModal/DateModal';
+
 import Calendar from 'react-calendar';
 import '../DisplayCalendar/Calendar.css';
 import { DateTime } from "luxon";
@@ -14,10 +14,10 @@ import CardContent from '@mui/material/CardContent';
 
 function DisplayCalendar() {
     // local state
-    let [postVis, togglePostVis] = useState(false),
-        [putVis, togglePutVis] = useState(false),
+    let [visibility, toggleVis] = useState(false),
         [dateClicked, setDateClicked] = useState(new Date()),
-        [dateClickedString, setDateClickedString] = useState('');
+        [dateClickedString, setDateClickedString] = useState(''),
+        [isPut, setType] = useState(true);
         
     // store
     const habitLog = useSelector(store => store.habitLog);
@@ -48,24 +48,23 @@ function DisplayCalendar() {
         // dateClicked will keep a Date object to compare against log dates
         setDateClickedString(rawDT.toFormat('MMMM dd, yyyy'));
         setDateClicked(new Date(value));
-        console.log('Piece of shit date clicked', dateClicked);
         
         // if dateClicked matches a log entry, open form to edit the current data
         // else open form to create new log entry
-        
+        // reset state
+        setType(false);
+
         for(let log of habitLog){
             console.log( log.date, value.toISOString());
 
             if(log.date === value.toISOString()){
                 console.log('found a match');
                 // display PutModal
-                togglePutVis(true)       
+                setType(true);       
             }   
         }   
-        if(putVis === false){
-            // display PostModal 
-            togglePostVis(true);
-        }
+        
+        toggleVis(true);
     }
 
     return (
@@ -77,16 +76,11 @@ function DisplayCalendar() {
                 <Card variant="outlined">
                     <CardContent>
                         {/* conditionally render PostModal and PutModal */}
-                        {postVis && <PostModal toggleVis={togglePostVis} dateClicked={dateClicked} dateClickedString={dateClickedString}/>}
-                        {putVis && <PutModal toggleVis={togglePutVis} dateClicked={dateClicked} dateClickedString={dateClickedString}/>}
+                        {visibility && <DateModal toggleVis={toggleVis} dateClicked={dateClicked} dateClickedString={dateClickedString} isPut={isPut}/>}
                         <div>
-
-
                             <h3>All Notes</h3>
-
                             <NotesList />
                         </div>
-
                     </CardContent>
                 </Card>
 
