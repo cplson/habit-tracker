@@ -1,52 +1,45 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Button from '@mui/material/Button';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import TextareaAutosize from '@mui/base/TextareaAutosize';
-import { DateTime } from "luxon";
 
 
 
-function DateForm({ dateClicked, dateClickedString, isPost}) {
+
+function PostForm({ dateClicked, dateClickedString }) {
 
     // store
-    const habitLog = useSelector(store => store.habitLog);
     const habitId = useSelector(store => store.user.active_habit_id);
 
     // local state
     const [status, setStatus] = useState('');
     const [notes, setNotes] = useState('');
-    
+
 
     // dispatch
     const dispatch = useDispatch();
 
     // local vars
     let newDate = { habit_id: habitId, date: dateClicked, status: '', notes: '' }
-    
+
     // on ready DOM, determine request type
-    
+
     const handleSubmit = () => {
+
+            // newDate.status = status;
+            // newDate.notes = notes;
+
+            // dispatch({
+            //     type: 'ADD_TO_LOG',
+            //     payload: newDate
+            // })
         
 
-        newDate.status = status;
-        newDate.notes = notes;
-
-        
-        if(isPost){
-            dispatch({
-                type: 'ADD_TO_LOG',
-                payload: newDate
-            })
-        }
-        // else(
-            
-        // )
-        
-        console.log('yay submitted with data:', newDate);
+        console.log('postForm');
 
     }
 
@@ -60,7 +53,6 @@ function DateForm({ dateClicked, dateClickedString, isPost}) {
         <div>
             <h4>{dateClickedString}</h4>
             <form onSubmit={handleSubmit}>
-
                 <FormControl fullWidth>
                     <InputLabel id="statusLabel">Status</InputLabel>
                     <Select
@@ -88,4 +80,4 @@ function DateForm({ dateClicked, dateClickedString, isPost}) {
     )
 }
 
-export default DateForm;
+export default PostForm;
