@@ -29,15 +29,16 @@ function PostForm({ dateClicked, dateClickedString, handleClose }) {
     // on ready DOM, determine request type
 
     const handleSubmit = () => {
-
-            newDate.status = status;
-            newDate.notes = notes;
-
-            dispatch({
-                type: 'ADD_TO_LOG',
-                payload: newDate
-            })
+        event.preventDefault();
         
+        newDate.status = status;
+        newDate.notes = notes;
+
+        dispatch({
+            type: 'ADD_TO_LOG',
+            payload: newDate
+        })
+
 
         handleClose();
 

@@ -4,7 +4,7 @@ import axios from 'axios';
 function* fetchHabitLog(action){
     // console.log('triggered fetchHabitLog()', action.payload);
     try{
-        const habitLog = yield axios.get(`/api/habit-log/${action.payload.active_habit_id}`);
+        const habitLog = yield axios.get(`/api/habit-log`);
         // console.log('habitLog in fetchHabitLog:', habitLog);
         // console.log('recieved from db:', habitLog);
         yield put({type: 'SET_LOG', payload: habitLog.data});

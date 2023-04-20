@@ -8,10 +8,10 @@ const {
 /**
  * GET habit log
  */
-router.get('/:id', rejectUnauthenticated, (req, res) => {
+router.get('/', rejectUnauthenticated, (req, res) => {
   // GET route code here
   console.log('req.body:', req.params.id);
-  const habitId = req.params.id;
+  const habitId = req.user.active_habit_id;
   const queryText = `SELECT habit_log.id, date, status, notes 
   FROM habit_log
   JOIN habits ON habit_log.habit_id = habits.id
