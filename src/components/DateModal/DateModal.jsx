@@ -17,7 +17,7 @@ const style = {
   p: 4,
 };
 
-export default function PostModal({toggleVis, dateClicked, dateClickedString, isPut}) {
+export default function PostModal({toggleVis, dateClicked, dateClickedString, isPut, thisLog, setLog}) {
   const [open, setOpen] = useState(true);
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
@@ -36,9 +36,9 @@ export default function PostModal({toggleVis, dateClicked, dateClickedString, is
       >
         <Box sx={style}>
           {isPut ?
-          <PutForm dateClicked={dateClicked} dateClickedString={dateClickedString}/>
+          <PutForm dateClicked={dateClicked} dateClickedString={dateClickedString} thisLog={thisLog} setLog={setLog} handleClose={handleClose}/>
           :
-          <PostForm dateClicked={dateClicked} dateClickedString={dateClickedString}/>
+          <PostForm dateClicked={dateClicked} dateClickedString={dateClickedString} handleClose={handleClose}/>
         }
         </Box>
       </Modal>

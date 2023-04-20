@@ -10,7 +10,7 @@ import TextareaAutosize from '@mui/base/TextareaAutosize';
 
 
 
-function PostForm({ dateClicked, dateClickedString }) {
+function PostForm({ dateClicked, dateClickedString, handleClose }) {
 
     // store
     const habitId = useSelector(store => store.user.active_habit_id);
@@ -39,7 +39,7 @@ function PostForm({ dateClicked, dateClickedString }) {
             })
         
 
-        console.log('postForm');
+        handleClose();
 
     }
 

@@ -17,7 +17,8 @@ function DisplayCalendar() {
     let [visibility, toggleVis] = useState(false),
         [dateClicked, setDateClicked] = useState(new Date()),
         [dateClickedString, setDateClickedString] = useState(''),
-        [isPut, setType] = useState(true);
+        [isPut, setType] = useState(true),
+        [thisLog, setLog] = useState({});
         
     // store
     const habitLog = useSelector(store => store.habitLog);
@@ -49,18 +50,21 @@ function DisplayCalendar() {
         setDateClickedString(rawDT.toFormat('MMMM dd, yyyy'));
         setDateClicked(new Date(value));
         
-        // if dateClicked matches a log entry, open form to edit the current data
-        // else open form to create new log entry
+
         // reset state
         setType(false);
-
+        // if dateClicked matches a log entry, open form to edit the current data
+        // else open form to create new log entry
         for(let log of habitLog){
             console.log( log.date, value.toISOString());
 
             if(log.date === value.toISOString()){
                 console.log('found a match');
                 // display PutModal
-                setType(true);       
+                setType(true); 
+                setLog(log);
+                // dispatch to store this student info in redux
+                dispatch({ type: 'SET_EDIT_LOG', payload: log });      
             }   
         }   
         
@@ -76,7 +80,7 @@ function DisplayCalendar() {
                 <Card variant="outlined">
                     <CardContent>
                         {/* conditionally render PostModal and PutModal */}
-                        {visibility && <DateModal toggleVis={toggleVis} dateClicked={dateClicked} dateClickedString={dateClickedString} isPut={isPut}/>}
+                        {visibility && <DateModal toggleVis={toggleVis} dateClicked={dateClicked} dateClickedString={dateClickedString} isPut={isPut} thisLog={thisLog} setLog={setLog}/> }
                         <div>
                             <h3>All Notes</h3>
                             <NotesList />

@@ -32,8 +32,10 @@ function* editLogEntry(action){
         yield axios.put(`/api/habit-log/${action.payload.id}`, action.payload)
         // put dispatch
         yield put({type: 'FETCH_LOG'});
+        // clear editLog
+        yield put({ type: 'EDIT_CLEAR'});
     }catch(err){
-        console.log('there was an issue attempting to edit the habit log in the db', err);
+        console.log('error in editLogEntry() in habitLog saga', err);
     }
 }
 function* habitLogSaga(){
