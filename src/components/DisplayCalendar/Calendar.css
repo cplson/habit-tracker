@@ -147,3 +147,13 @@
     background-color: #e6e6e6;
   }
   
+  .successful{
+    background-color: green;
+  }
+  
+  .unsuccessful{
+    background-color: red;
+  }
+  
+
+  

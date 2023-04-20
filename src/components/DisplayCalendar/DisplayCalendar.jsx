@@ -71,7 +71,7 @@ function DisplayCalendar() {
         toggleVis(true);
     }
 
-    const setContent = (view, date) => {
+    const setContent = ( date ) => {
         let loggedDate = {};
             
             
@@ -92,11 +92,20 @@ function DisplayCalendar() {
         return <p>{loggedDate.notes}</p>
     }
 
+    const setStatus = date => {
+        for(let log of habitLog){
+            if(log.date == date.toISOString()){
+                return log.status;
+            }
+        }
+    }
+
     return (
         <div className='flex-container'>
             <Calendar calendarType='US'
                 onChange={event => dayClick(event)}
-                tileContent={({view, date}) => setContent(view, date)}
+                tileContent={({ date }) => setContent( date )}
+                tileClassName={({date}) => setStatus(date)}
                  />
 
             <div id='notesContainer'>

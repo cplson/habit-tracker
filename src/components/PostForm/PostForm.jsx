@@ -30,7 +30,7 @@ function PostForm({ dateClicked, dateClickedString, handleClose }) {
 
     const handleSubmit = () => {
         event.preventDefault();
-        
+
         newDate.status = status;
         newDate.notes = notes;
 
@@ -64,9 +64,9 @@ function PostForm({ dateClicked, dateClickedString, handleClose }) {
                         label="status"
                         onChange={handleChange}
                     >
-                        <MenuItem value={'Default'}>Default</MenuItem>
-                        <MenuItem value={'Successful'}>Successful</MenuItem>
-                        <MenuItem value={'Unsuccessful'}>Unsuccessful</MenuItem>
+                        <MenuItem value={'default'}>Default</MenuItem>
+                        <MenuItem value={'successful'}>Successful</MenuItem>
+                        <MenuItem value={'unsuccessful'}>Unsuccessful</MenuItem>
                     </Select>
                     <TextareaAutosize
                         aria-label="empty textarea"

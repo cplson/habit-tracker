@@ -64,9 +64,9 @@ function PutForm({ dateClicked, dateClickedString, thisLog, setLog, handleClose 
                         label="status"
                         onChange={handleChange}
                     >
-                        <MenuItem value={'Default'}>Default</MenuItem>
-                        <MenuItem value={'Successful'}>Successful</MenuItem>
-                        <MenuItem value={'Unsuccessful'}>Unsuccessful</MenuItem>
+                        <MenuItem value={'default'}>Default</MenuItem>
+                        <MenuItem value={'successful'}>Successful</MenuItem>
+                        <MenuItem value={'unsuccessful'}>Unsuccessful</MenuItem>
                     </Select>
                     <TextareaAutosize
                         aria-label="empty textarea"
