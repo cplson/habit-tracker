@@ -37,8 +37,8 @@ function PutForm({ dateClicked, dateClickedString }) {
             //     type: 'ADD_TO_LOG',
             //     payload: newDate
             // })
-        
-            console.log('PutForm');
+            
+            console.log('PutForm', dateClicked);
     }
 
     const handleChange = (event) => {

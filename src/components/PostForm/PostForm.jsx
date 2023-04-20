@@ -30,13 +30,13 @@ function PostForm({ dateClicked, dateClickedString }) {
 
     const handleSubmit = () => {
 
-            // newDate.status = status;
-            // newDate.notes = notes;
+            newDate.status = status;
+            newDate.notes = notes;
 
-            // dispatch({
-            //     type: 'ADD_TO_LOG',
-            //     payload: newDate
-            // })
+            dispatch({
+                type: 'ADD_TO_LOG',
+                payload: newDate
+            })
         
 
         console.log('postForm');
@@ -52,7 +52,7 @@ function PostForm({ dateClicked, dateClickedString }) {
     return (
         <div>
             {/* <h4>{dateClickedString}</h4> */}
-            <h4>PostForm</h4>
+            <h4>{dateClickedString}</h4>
             <form onSubmit={handleSubmit}>
                 <FormControl fullWidth>
                     <InputLabel id="statusLabel">Status</InputLabel>
