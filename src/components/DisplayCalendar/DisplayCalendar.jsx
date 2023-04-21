@@ -19,12 +19,12 @@ function DisplayCalendar() {
         [dateClickedString, setDateClickedString] = useState(''),
         [isPut, setType] = useState(true),
         [thisLog, setLog] = useState({});
-        
+
     // store
     const habitLog = useSelector(store => store.habitLog);
     const user = useSelector(store => store.user);
-    
-    
+
+
     // declare dispatch
     const dispatch = useDispatch();
 
@@ -32,8 +32,6 @@ function DisplayCalendar() {
 
     useEffect(() => {
         dispatch({ type: 'FETCH_LOG', payload: user });
-        
-        // console.log('current habit after FETCH_CURRENT_HABIT dispatch', currentHabit);
     }, [])
 
 
@@ -49,38 +47,38 @@ function DisplayCalendar() {
         // dateClicked will keep a Date object to compare against log dates
         setDateClickedString(rawDT.toFormat('MMMM dd, yyyy'));
         setDateClicked(new Date(value));
-        
+
 
         // reset state
         setType(false);
         // if dateClicked matches a log entry, open form to edit the current data
         // else open form to create new log entry
-        for(let log of habitLog){
-            console.log( log.date, value.toISOString());
+        for (let log of habitLog) {
+            console.log(log.date, value.toISOString());
 
-            if(log.date === value.toISOString()){
+            if (log.date === value.toISOString()) {
                 console.log('found a match');
                 // display PutModal
-                setType(true); 
+                setType(true);
                 setLog(log);
                 // dispatch to store this student info in redux
-                dispatch({ type: 'SET_EDIT_LOG', payload: log });      
-            }   
-        }   
-        
+                dispatch({ type: 'SET_EDIT_LOG', payload: log });
+            }
+        }
+
         toggleVis(true);
     }
 
-    const setContent = ( date ) => {
+    const setContent = (date) => {
         let loggedDate = {};
-            
-            
-        for(let log of habitLog){
+
+
+        for (let log of habitLog) {
             console.log(date.toISOString(), log.date);
-            if(log.date == date.toISOString()){
+            if (log.date == date.toISOString()) {
                 console.log('found a match');
-                loggedDate = {length: 4, ...log}
-            }     
+                loggedDate = { length: 4, ...log }
+            }
         }
         console.log(loggedDate);
         // return(
@@ -93,8 +91,8 @@ function DisplayCalendar() {
     }
 
     const setStatus = date => {
-        for(let log of habitLog){
-            if(log.date == date.toISOString()){
+        for (let log of habitLog) {
+            if (log.date == date.toISOString()) {
                 return log.status;
             }
         }
@@ -104,15 +102,14 @@ function DisplayCalendar() {
         <div className='flex-container'>
             <Calendar calendarType='US'
                 onChange={event => dayClick(event)}
-                tileContent={({ date }) => setContent( date )}
-                tileClassName={({date}) => setStatus(date)}
-                 />
+                tileContent={({ date }) => setContent(date)}
+                tileClassName={({ date }) => setStatus(date)}
+            />
 
-            <div id='notesContainer'>
-                <Card variant="outlined">
+            <div >
+                <Card variant="outlined" id='notes-container'>
                     <CardContent>
-                        {/* conditionally render PostModal and PutModal */}
-                        {visibility && <DateModal toggleVis={toggleVis} dateClicked={dateClicked} dateClickedString={dateClickedString} isPut={isPut} thisLog={thisLog} setLog={setLog}/> }
+
                         <div>
                             <h3>All Notes</h3>
                             <NotesList />
@@ -121,7 +118,11 @@ function DisplayCalendar() {
                 </Card>
 
 
-            </div>
+            </div>{/* conditionally render PostModal and PutModal */}
+            {visibility && <DateModal
+                toggleVis={toggleVis} dateClicked={dateClicked}
+                dateClickedString={dateClickedString} isPut={isPut}
+                thisLog={thisLog} setLog={setLog} />}
         </div>
     )
 }

@@ -63,7 +63,8 @@
   
   .react-calendar__navigation button:enabled:hover,
   .react-calendar__navigation button:enabled:focus {
-    background-color: #e6e6e6;
+    background-color: #279AF1;
+    color: white;
   }
   
   .react-calendar__month-view__weekdays {
@@ -156,5 +157,7 @@
     background-color: #E2B1B1;
   }
   
-
+#notes-container{
+  max-width: 400px;
+}
   
