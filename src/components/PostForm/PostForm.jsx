@@ -38,8 +38,7 @@ function PostForm({ dateClicked, dateClickedString, handleClose }) {
             type: 'ADD_TO_LOG',
             payload: newDate
         })
-
-
+        
         handleClose();
 
     }
