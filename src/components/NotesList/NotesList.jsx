@@ -8,16 +8,16 @@ function NotesList() {
     const logToDate = [];
 
     // convert log dates back to Date from string
-    for (let log of habitLog){
-        if(log.notes != ''){
-            logToDate.push({date: log.date.split('T')[0], notes: log.notes});
+    for (let log of habitLog) {
+        if (log.notes != '') {
+            logToDate.push({ date: log.date.split('T')[0], notes: log.notes });
         }
     }
     console.log(logToDate);
     return (
-        <ul>
+        <ul >
             {logToDate.map((log, i) =>
-                <p key={i} className='noteList'>{log.date}: {log.notes}</p>
+                <p key={i} className='note-list-note'>{log.date}: {log.notes}</p>
             )}
         </ul>
     );

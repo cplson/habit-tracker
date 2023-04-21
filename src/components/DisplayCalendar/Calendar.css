@@ -160,4 +160,11 @@
 #notes-container{
   max-width: 400px;
 }
+
+#note-list{
+  overflow-y: scroll;
+  max-height: 650px;
+}
+
+
   

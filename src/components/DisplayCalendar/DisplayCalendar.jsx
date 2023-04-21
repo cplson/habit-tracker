@@ -110,7 +110,7 @@ function DisplayCalendar() {
                 <Card variant="outlined" id='notes-container'>
                     <CardContent>
 
-                        <div>
+                        <div id='note-list'>
                             <h3>All Notes</h3>
                             <NotesList />
                         </div>
