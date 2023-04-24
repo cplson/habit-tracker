@@ -33,11 +33,13 @@ Button
   border-color: #014041;
   border-width: 1px 1px 3px;
   border-radius: 4px;
-  background-color: #00acb0;
-  color: #f8f8f8;
+  background-color: #9BE564;
+  color: #000;
   font-size: 1.1rem;
   outline: 0;
   cursor: pointer;
+  margin-left: 0px;
+  max-height: 50px;
 }
 
 .btn_sizeMin {
@@ -56,7 +58,8 @@ Button
 }
 
 .btn:hover {
-  background-color: #008183;
+  background-color: #279AF1;
+  color: #efefef;
   text-decoration: none;
 }
 
@@ -73,10 +76,13 @@ Button
 
 .btn_asLink:hover {
   background-color: transparent;
-  border-color: #008183;
-  color: #008183;
+  border-color: #279AF1;
+  color: #279AF1;
 }
 
+.reflect-button{
+  background-color: #279AF1;
+}
 /* --------------------------------------------------------------------------------
 Alert
 -------------------------------------------------------------------------------- */
@@ -116,4 +122,34 @@ ul {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+#user-container, #welcome-container, #card-container{
+  display: flex;
+}
+#user-container{
+  min-height: 100vh;
+  position: relative;
+}
+#welcome-container{
+  justify-content: right;
+  align-items: center;
+}
+#card-container{
+  justify-content: space-between;
+  width: 100%;
+  
+  /* height: 500px; */
+}
+#main-container{
+  margin: 30px;
+  width: 100%;
+}
+#aside-container{
+  background-color: #CAC4CE;
+  width: 25%;
+}
+
+.reflection-card{
+  width: 40%;
 }
