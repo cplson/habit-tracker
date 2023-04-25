@@ -19,7 +19,7 @@ function* addToLog(action){
         // axios POST
         yield axios.post('/api/habit-log', action.payload);
         // yield fetch log
-        yield({type: 'FETCH_LOG'});
+        yield put({type: 'FETCH_LOG'});
     }catch(err){
         console.log('there was an issue adding date to log to the db', err);
     }

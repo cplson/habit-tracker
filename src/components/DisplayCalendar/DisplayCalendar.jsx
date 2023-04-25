@@ -81,12 +81,7 @@ function DisplayCalendar() {
             }
         }
         console.log(loggedDate);
-        // return(
-        //     <>
-        //     {!Array.prototype.includes.call(loggedDate, date.toISOString()) &&
-        //     <p>{loggedDate.notes}</p>}
-        //     </>
-        //     )
+        
         return <p>{loggedDate.notes}</p>
     }
 
@@ -122,7 +117,8 @@ function DisplayCalendar() {
             {visibility && <DateModal
                 toggleVis={toggleVis} dateClicked={dateClicked}
                 dateClickedString={dateClickedString} isPut={isPut}
-                thisLog={thisLog} setLog={setLog} />}
+                thisLog={thisLog} setLog={setLog} setDateClicked={setDateClicked}
+                setDateClickedString={setDateClickedString}/>}
         </div>
     )
 }

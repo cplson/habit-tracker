@@ -38,7 +38,6 @@ function PostForm({ dateClicked, dateClickedString, handleClose }) {
             type: 'ADD_TO_LOG',
             payload: newDate
         })
-        
         handleClose();
 
     }
@@ -67,11 +66,10 @@ function PostForm({ dateClicked, dateClickedString, handleClose }) {
                         <MenuItem value={'successful'}>Successful</MenuItem>
                         <MenuItem value={'unsuccessful'}>Unsuccessful</MenuItem>
                     </Select>
-                    <TextareaAutosize
+                    <TextareaAutosize fullWidth
                         aria-label="empty textarea"
                         value={notes}
                         placeholder="Notes"
-                        style={{ width: 400 }}
                         onChange={handleText}
                     />
                     <Button type='submit'>Submit</Button>

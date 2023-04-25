@@ -153,3 +153,7 @@ ul {
 .reflection-card{
   width: 40%;
 }
+
+#login-form{
+  margin-top: 60px;
+}

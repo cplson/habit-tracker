@@ -8,7 +8,7 @@ function LoginPage() {
   const history = useHistory();
 
   return (
-    <div>
+    <div id="login-form">
       <LoginForm />
 
       <center>

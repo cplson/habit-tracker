@@ -10,23 +10,13 @@ import TextareaAutosize from '@mui/base/TextareaAutosize';
 
 
 
-function PutForm({ dateClicked, dateClickedString, thisLog, setLog, handleClose }) {
+function PutForm({ dateClickedString, handleClose }) {
 
     // store
-    const habitId = useSelector(store => store.user.active_habit_id);
     const editLog = useSelector(store => store.editLog);
-    // local state
-    const [status, setStatus] = useState('');
-    const [notes, setNotes] = useState('');
-
-
+    
     // dispatch
     const dispatch = useDispatch();
-
-    // // local vars
-    // let newDate = { habit_id: habitId, date: dateClicked, status: '', notes: '' }
-
-    // on ready DOM, determine request type
 
     const handleSubmit = () => {
             event.preventDefault();
@@ -35,7 +25,7 @@ function PutForm({ dateClicked, dateClickedString, thisLog, setLog, handleClose 
                 type: 'EDIT_LOG_ENTRY',
                 payload: editLog
             })
-            
+
             handleClose();
     }
 
@@ -68,11 +58,10 @@ function PutForm({ dateClicked, dateClickedString, thisLog, setLog, handleClose 
                         <MenuItem value={'successful'}>Successful</MenuItem>
                         <MenuItem value={'unsuccessful'}>Unsuccessful</MenuItem>
                     </Select>
-                    <TextareaAutosize
+                    <TextareaAutosize fullWidth
                         aria-label="empty textarea"
                         value={editLog.notes}
                         placeholder="Notes"
-                        style={{ width: 400 }}
                         onChange={handleText}
                     />
                     <Button type='submit'>Submit</Button>
