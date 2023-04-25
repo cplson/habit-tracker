@@ -22,6 +22,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 
 import './App.css';
 import DisplayCalendar from '../DisplayCalendar/DisplayCalendar';
+import MotoBlessing from '../MotoBlessing/MotoBlessing';
 
 function App() {
   const dispatch = useDispatch();
@@ -48,7 +49,15 @@ function App() {
           >
             <AboutPage />
           </Route>
+          <ProtectedRoute>
 
+            <Route
+              exact
+              path="/mb"
+            >
+              <MotoBlessing />
+            </Route>
+          </ProtectedRoute>
           {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the LoginPage (component).

@@ -11,6 +11,8 @@ const passport = require('./strategies/user.strategy');
 const userRouter = require('./routes/user.router');
 const habitsRouter = require('./routes/habits.router');
 const habitLogRouter = require('./routes/habit-log.router');
+const motoRouter = require('./routes/motivations.router');
+const blessingsRouter = require('./routes/blessings.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -27,6 +29,8 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/api/habits', habitsRouter);
 app.use('/api/habit-log', habitLogRouter);
+app.use('/api/motivations', motoRouter);
+app.use('/api/blessings', blessingsRouter);
 
 // Serve static files
 app.use(express.static('build'));

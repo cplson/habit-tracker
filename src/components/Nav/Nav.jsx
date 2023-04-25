@@ -3,10 +3,16 @@ import { Link } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import { useSelector } from 'react-redux';
+import Button from '@mui/material/Button';
 
 function Nav() {
   const user = useSelector((store) => store.user);
 
+  const motoAndBlessings = () => {
+    // Pull up modal
+    return <Modal>sheesh</Modal>;
+    
+  }
   return (
     <div className="nav">
       <Link to="/home">
@@ -32,6 +38,8 @@ function Nav() {
               Info Page
             </Link>
 
+            <Link className="navLink" to="/mb">Motivations and Blessings</Link>
+
             <LogOutButton className="navLink" />
           </>
         )}
@@ -39,6 +47,8 @@ function Nav() {
         <Link className="navLink" to="/about">
           About
         </Link>
+        
+        
       </div>
     </div>
   );

@@ -5,6 +5,8 @@ import habits from './habits.reducer';
 import habitLog from './habitLog.reducer';
 import modalState from './modalState.reducer';
 import editLog from './editLog.reducer';
+import motivations from './motivations.reducer';
+import blessings from './blessings.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -18,8 +20,9 @@ const rootReducer = combineReducers({
   habits,
   habitLog,
   modalState,
-  editLog
-
+  editLog,
+  motivations, // has an id, a user_id (fk), and the motivation
+  blessings // has an id, a user_id (fk), and the blessing
 });
 
 export default rootReducer;

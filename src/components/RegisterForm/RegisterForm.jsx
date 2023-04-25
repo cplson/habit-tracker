@@ -98,6 +98,19 @@ function RegisterForm() {
         </label>
       </div>
       <div>
+
+        <label htmlFor="firstMotivation">
+          Add one thing that motivates you to make this habit change:
+          <input
+            type="text"
+            name="firstMotivation"
+            value={firstMotivation}
+            required
+            onChange={(event) => setFirstMotivation(event.target.value)}
+          />
+        </label>
+      </div>
+      <div>
         <input className="btn" type="submit" name="submit" value="Register" />
       </div>
     </form>
