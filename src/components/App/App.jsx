@@ -49,15 +49,16 @@ function App() {
           >
             <AboutPage />
           </Route>
-          <ProtectedRoute>
 
-            <Route
+          
+              <ProtectedRoute
               exact
-              path="/mb"
-            >
-              <MotoBlessing />
-            </Route>
-          </ProtectedRoute>
+              path="/mb">
+                <MotoBlessing />
+              </ProtectedRoute>
+            
+          
+
           {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
@@ -69,6 +70,7 @@ function App() {
           >
             <UserPage />
           </ProtectedRoute>
+
           <ProtectedRoute
             // logged in shows UserPage else shows LoginPage
             exact
@@ -76,6 +78,7 @@ function App() {
           >
             <DisplayCalendar />
           </ProtectedRoute>
+
           <ProtectedRoute
             // logged in shows InfoPage else shows LoginPage
             exact
@@ -83,6 +86,7 @@ function App() {
           >
             <InfoPage />
           </ProtectedRoute>
+          
           <Route
             exact
             path="/login"
