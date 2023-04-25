@@ -36,8 +36,8 @@ function DisplayCalendar() {
 
 
 
-    const dayClick = (value) => {
-        console.log(value.toISOString());
+    const dayClick = (value, event) => {
+        console.log('trying event.detail');
         // set temp date needed to transfer to DateTime
         let tempDate = new Date(value.toISOString());
         // temp DateTime object that will be used to set the local state
@@ -54,10 +54,10 @@ function DisplayCalendar() {
         // if dateClicked matches a log entry, open form to edit the current data
         // else open form to create new log entry
         for (let log of habitLog) {
-            console.log(log.date, value.toISOString());
+            // console.log(log.date, value.toISOString());
 
             if (log.date === value.toISOString()) {
-                console.log('found a match');
+                // console.log('found a match');
                 // display PutModal
                 setType(true);
                 setLog(log);
@@ -74,9 +74,9 @@ function DisplayCalendar() {
 
 
         for (let log of habitLog) {
-            console.log(date.toISOString(), log.date);
+            // console.log(date.toISOString(), log.date);
             if (log.date == date.toISOString()) {
-                console.log('found a match');
+                // console.log('found a match');
                 loggedDate = { length: 4, ...log }
             }
         }
@@ -96,7 +96,7 @@ function DisplayCalendar() {
     return (
         <div className='flex-container'>
             <Calendar calendarType='US'
-                onChange={event => dayClick(event)}
+                onClickDay={(value, event) => dayClick(value, event)}
                 tileContent={({ date }) => setContent(date)}
                 tileClassName={({ date }) => setStatus(date)}
             />

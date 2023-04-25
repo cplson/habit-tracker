@@ -58,7 +58,7 @@ function PutForm({ dateClickedString, handleClose }) {
                         <MenuItem value={'successful'}>Successful</MenuItem>
                         <MenuItem value={'unsuccessful'}>Unsuccessful</MenuItem>
                     </Select>
-                    <TextareaAutosize fullWidth
+                    <TextareaAutosize fullwidth='true'
                         aria-label="empty textarea"
                         value={editLog.notes}
                         placeholder="Notes"

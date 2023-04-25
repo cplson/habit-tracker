@@ -66,7 +66,7 @@ function PostForm({ dateClicked, dateClickedString, handleClose }) {
                         <MenuItem value={'successful'}>Successful</MenuItem>
                         <MenuItem value={'unsuccessful'}>Unsuccessful</MenuItem>
                     </Select>
-                    <TextareaAutosize fullWidth
+                    <TextareaAutosize fullwidth='true'
                         aria-label="empty textarea"
                         value={notes}
                         placeholder="Notes"
