@@ -15,7 +15,8 @@ router.get('/', rejectUnauthenticated, (req, res) => {
   const queryText = `SELECT habit_log.id, date, status, notes 
   FROM habit_log
   JOIN habits ON habit_log.habit_id = habits.id
-  WHERE habits.id = $1;`
+  WHERE habits.id = $1
+  ORDER BY date DESC;`
   console.log('habitId', habitId);
 
   pool.query(queryText, [habitId])
