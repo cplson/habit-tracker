@@ -51,7 +51,7 @@ function PutForm({ dateClickedString, handleClose }) {
                         labelId="statusLabel"
                         id="dateFormStatus"
                         value={editLog.status}
-                        label="status"
+                        label={editLog.status}
                         onChange={handleChange}
                     >
                         <MenuItem value={'default'}>Default</MenuItem>
