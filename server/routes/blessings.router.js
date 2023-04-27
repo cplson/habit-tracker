@@ -44,4 +44,23 @@ router.post('/', rejectUnauthenticated, (req, res) => {
         })
 });
 
+// PUT 
+router.put('/:id', rejectUnauthenticated, (req, res) => {
+    console.log(req.body);
+    const userId = req.user.id,
+        blessingId = req.params.id,
+        blessing = req.body.blessing,
+        queryText = `UPDATE blessings
+        SET blessing = $1
+        WHERE user_id = $2 AND id = $3;`
+
+        pool.query(queryText, [blessing, userId, blessingId])
+            .then(result => {
+                res.sendStatus(200)
+            }).catch(err => {
+                console.log(err);
+                res.sendStatus(500);
+            })
+})
+
 module.exports = router;

@@ -17,7 +17,7 @@ const style = {
   p: 4,
 };
 
-export default function MbModal({toggleVis, isMotivation, isPost}) {
+export default function MbModal({toggleVis, isMotivation, isPost, thisBlessing, thisMotivation}) {
   const [open, setOpen] = useState(true);
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
@@ -34,7 +34,9 @@ export default function MbModal({toggleVis, isMotivation, isPost}) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          {isPost ? <MbPost toggleVis={toggleVis} isMotivation={isMotivation}/> : <MbPut toggleVis={toggleVis} isMotivation={isMotivation}/>}
+          {isPost ? 
+            <MbPost toggleVis={toggleVis} isMotivation={isMotivation}/> : 
+            <MbPut toggleVis={toggleVis} isMotivation={isMotivation} thisBlessing={thisBlessing} thisMotivation={thisMotivation}/>}
         </Box>
       </Modal>
     </div>

@@ -128,6 +128,10 @@ ul {
   margin: 0;
   padding: 0;
 }
+li{
+  margin: 0;
+  padding: 0;
+}
 
 #user-container, #welcome-container, #card-container{
   display: flex;
@@ -160,7 +164,7 @@ ul {
 }
 
 .reflection-card{
-  width: 30%;
+  width: 35%;
 }
 
 #login-form{
@@ -168,5 +172,11 @@ ul {
 }
 
 .motivation-item, .blessing-item{
-  margin: 10px;
+  margin: 10px 0;
+  padding: 0;
+}
+
+.edit-icon-button{
+  margin: 0;
+  padding: 0;
 }

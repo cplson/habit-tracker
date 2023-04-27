@@ -2,13 +2,15 @@ import Button from '@mui/material/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import MbModal from '../MbModal/MbModal';
+import EditIcon from '@mui/icons-material/Edit';
 
 function Motivations() {
 
     // local state
     let [visibility, toggleVis] = useState(false),
         [isPost, setRoute] = useState(true),
-        [isMotivation, setType] = useState(true);
+        [isMotivation, setType] = useState(true),
+        [thisMotivation, setMotivation] = useState({});
 
     const motivations = useSelector(store => store.motivations)
 
@@ -26,7 +28,17 @@ function Motivations() {
         <>
             <h3>Motivations</h3>
             <ul>
-                {motivations.map(motivation => <li key={motivation.id} className='motivation-item'>{motivation.motivation}</li>)}
+                {motivations.map(motivation =>
+                    <li key={motivation.id} className='motivation-item'>
+                        <Button onClick={event => {
+                            toggleVis(true);
+                            setRoute(false);
+                            console.log('motivation is', motivation)
+                            setMotivation(motivation)
+                        }}
+                            className="edit-icon-button" >
+                                <EditIcon fontSize='small' /></Button>
+                        {motivation.motivation}</li>)}
             </ul>
             <div className='button-group'>
                 <Button variant='contained' sx={{ backgroundColor: '#279AF1' }}
@@ -34,7 +46,7 @@ function Motivations() {
                 <Button variant='outlined' className='reflect-button' sx={{ color: '#279AF1' }}>Reflect</Button>
             </div>
             {visibility && <MbModal
-                toggleVis={toggleVis} isMotivation={isMotivation} isPost={isPost} />}
+                toggleVis={toggleVis} isMotivation={isMotivation} isPost={isPost} thisMotivation={thisMotivation} setMotivation={setMotivation}/>}
         </>
     )
 }

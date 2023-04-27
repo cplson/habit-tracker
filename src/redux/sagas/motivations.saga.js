@@ -35,6 +35,14 @@ function* addMotivation(action){
 
 }
 
+function* editMotivation(action){
+    try{
+        yield axios.put(`api/motivations/${action.payload.id}`, action.payload)
+        yield put({type: 'FETCH_MOTIVATIONS'})
+    }catch(err){
+        console.log(err);
+    }
+}
 // parent generator function saga
 function* motivationsSaga(){
     // listens for dispatch to get the current motivations from the db
@@ -42,6 +50,8 @@ function* motivationsSaga(){
 
     // listens for dispatch to add a motivation to the db
     yield takeLatest('ADD_MOTIVATION', addMotivation);
+
+    yield takeLatest('EDIT_MOTIVATION', editMotivation);
 }
 
 export default motivationsSaga;

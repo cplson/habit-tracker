@@ -31,11 +31,23 @@ function* addBlessing(action){
         console.log('There was an error posting blessing to the db', err);
     }
 }
+
+function* editBlessing(action){
+    try{
+        console.log(action.payload);
+        yield axios.put(`api/blessings/${action.payload.id}`, action.payload)
+        yield put({type: 'FETCH_BLESSINGS'})
+    }catch(err){
+        console.log(err);
+    }
+}
 // parent generator function saga
 function* blessingsSaga(){
     yield takeLatest('FETCH_BLESSINGS', fetchBlessings);
     // listens for dispatch to make axios request to the server
     yield takeLatest('ADD_BLESSING', addBlessing);
+
+    yield takeLatest('EDIT_BLESSING', editBlessing);
 }
 
 export default blessingsSaga;

@@ -42,4 +42,23 @@ router.post('/', rejectUnauthenticated, (req, res) => {
         })
 });
 
+// PUT 
+router.put('/:id', rejectUnauthenticated, (req, res) => {
+    console.log(req.body);
+    const userId = req.user.id,
+        motivationId = req.params.id,
+        motivation = req.body.motivation,
+        queryText = `UPDATE motivations
+        SET motivation = $1
+        WHERE user_id = $2 AND id = $3;`
+
+        pool.query(queryText, [motivation, userId, motivationId])
+            .then(result => {
+                res.sendStatus(200)
+            }).catch(err => {
+                console.log(err);
+                res.sendStatus(500);
+            })
+})
+
 module.exports = router;
