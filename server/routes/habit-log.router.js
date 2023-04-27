@@ -57,6 +57,7 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
   const logId = req.params.id,
         status = req.body.status,
         notes = req.body.notes,
+        userId = req.user.id,
         queryText = `UPDATE habit_log
         SET status = $1,
           notes = $2
@@ -76,18 +77,19 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
 /**
  * DELETE logs for a habit to be deleted
  */
-router.delete('/:id', rejectUnauthenticated, (req, res) => {
-  const habitId = req.params.id,
-        queryText = `DELETE FROM habit_log
-        WHERE habit_id = $1;`;
+// router.delete('/:id', rejectUnauthenticated, (req, res) => {
+//   const habitId = req.params.id,
+//         userId = req.user.id;
+//         queryText = `DELETE FROM habit_log
+//         WHERE habit_id = $1;`;
 
-  pool.query(queryText, [habitId])
-    .then(result => {
-      res.sendStatus(200);
-    }).catch(err => {
-      console.log('There was an error deleting logs for the habit to be deleted', err);
-      res.sendStatus(500);
-    })
-})
+//   pool.query(queryText, [habitId])
+//     .then(result => {
+//       res.sendStatus(200);
+//     }).catch(err => {
+//       console.log('There was an error deleting logs for the habit to be deleted', err);
+//       res.sendStatus(500);
+//     })
+// })
 
 module.exports = router;

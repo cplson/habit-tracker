@@ -1,12 +1,13 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import HabitsList from '../HabitsList/HabitsList';
-import DisplayCalendar from '../DisplayCalendar/DisplayCalendar';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
+import Motivations from '../Motivations/Motivations';
+import Blessings from '../Blessings/Blessings';
 
 
 
@@ -20,12 +21,9 @@ function UserPage() {
   const user = useSelector((store) => store.user);
   const habits = useSelector(store => store.habits);
 
-  // const motivations = useSelector(store => store.motivations);
-  // const blessings = useSelector(store => store.blessings);
-  // const habitLog = useSelector(store => habitLog);
-  //console.log(habits[0].id);
-  // on page load get habit log info
-  // from the store
+  const blessings = useSelector(store => store.blessings);
+
+
 
   return (
     <>
@@ -43,20 +41,19 @@ function UserPage() {
           <div id='card-container'>
             <Card variant='outlined' className="reflection-card">
               <CardContent>
-                <h3>Motivations</h3>
-                <Button variant='contained' className='reflect-button' sx={{ backgroundColor: '#279AF1' }}>Reflect</Button>
+                <Motivations />
               </CardContent>
             </Card>
             <Card variant='outlined' className="reflection-card">
               <CardContent>
-                <h3>Blessings</h3>
-                <Button variant='contained' className='reflect-button' sx={{ backgroundColor: '#279AF1' }}>Reflect</Button>
+                <Blessings />
               </CardContent>
             </Card>
           </div>
         </div>
 
       </div>
+
     </>
   );
 }

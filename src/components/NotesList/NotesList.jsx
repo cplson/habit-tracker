@@ -1,6 +1,4 @@
-import Button from '@mui/material/Button';
-import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 function NotesList() {
 
