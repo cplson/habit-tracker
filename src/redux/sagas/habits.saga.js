@@ -28,7 +28,7 @@ function* deleteHabit(action){
     console.log('triggered deleteHabit()', action.payload);
     try{
         // delete habit logs related to this habit and update store
-        yield axios.delete(`/api/habit-log/${action.payload.id}`)
+        yield axios.delete(`/api/habits/${action.payload.id}`)
         yield put({type: 'FETCH_LOG'})
         // delete habit and update store
         yield axios.delete(`/api/habits/${action.payload.id}`);

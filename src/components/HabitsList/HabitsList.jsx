@@ -44,12 +44,16 @@ function HabitsList() {
 
     return (
         <>
-            <HabitForm />
+            <h2>Habits</h2>
             {
                 habits.length > 0 ?
                     <ul>
                         {habits.map(habit =>
                             <li key={habit.id}>
+                                <Button onClick={() =>
+                                    dispatch({ type: 'DELETE_HABIT', payload: habit })}>
+                                    <DeleteForeverIcon className='delete-habit'/>
+                                </Button>
                                 <Button onClick={() =>
                                     <>
                                         {/* {dispatch({ type: 'FETCH_LOG', payload: habit })} */}
@@ -58,12 +62,6 @@ function HabitsList() {
                                     </>
                                 }>
                                     {habit.description}
-
-
-                                </Button>
-                                <Button onClick={() =>
-                                    dispatch({ type: 'DELETE_HABIT', payload: habit })}>
-                                    <DeleteForeverIcon />
                                 </Button>
                             </li>)}
                     </ul>
@@ -71,7 +69,7 @@ function HabitsList() {
                     <p>You do not yet have any habits</p>
             }
             
-            
+            <HabitForm />
         </>
     );
 }

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 function HabitForm() {
     // local state
@@ -17,19 +19,17 @@ function HabitForm() {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form id='habit-form' onSubmit={handleSubmit}>
             <div>
-                <label htmlFor="description">
-                    New habit:
-                    <input
-                        type="text"
-                        name="description"
+                
+                    <TextField
+                    size='small'
+                        label="new habit"
                         value={description}
-                        required
                         onChange={(event) => setDescription(event.target.value)}
                     />
-                </label>
-                <button type="submit">Submit</button>
+                
+                <Button variant='contained' type="submit" sx={{backgroundColor: '#279AF1'}}>Add</Button>
             </div>
         </form>
     );

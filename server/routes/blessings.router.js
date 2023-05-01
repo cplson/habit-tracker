@@ -12,7 +12,8 @@ router.get('/',rejectUnauthenticated, (req, res) => {
   console.log('triggered blessings GET');
     const userId = req.user.id;
     const queryText = `SELECT * FROM blessings
-    WHERE user_id = $1;`;
+    WHERE user_id = $1
+    ORDER BY blessing DESC;`;
 
     pool.query(queryText, [userId])
         .then(result => {

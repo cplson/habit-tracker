@@ -23,7 +23,17 @@ function DisplayCalendar() {
     // store
     const habitLog = useSelector(store => store.habitLog);
     const user = useSelector(store => store.user);
+    const habits = useSelector(store => store.habits);
 
+    let activeHabit;
+
+    for(let habit of habits){
+        if(user.active_habit_id === habit.id){
+            activeHabit = habit.description;
+        }
+    }
+
+    console.log('active habit is:', activeHabit, habits, user);
 
     // declare dispatch
     const dispatch = useDispatch();
@@ -32,6 +42,7 @@ function DisplayCalendar() {
 
     useEffect(() => {
         dispatch({ type: 'FETCH_LOG', payload: user });
+        dispatch({type: 'FETCH_HABITS'});
     }, [])
 
 
@@ -109,8 +120,8 @@ function DisplayCalendar() {
                     <CardContent>
 
                         <div id='note-list'>
-                            <h3>All Notes</h3>
-                            <NotesList />
+                            <h3>All Notes - {activeHabit}</h3>
+                            <NotesList activeHabit={activeHabit}/>
                         </div>
                     </CardContent>
                 </Card>

@@ -136,10 +136,10 @@ li{
 #user-container, #welcome-container, #card-container{
   display: flex;
 }
-#user-container{
+/* #user-container{
   min-height: 100vh;
   position: relative;
-}
+} */
 
 #card-container{
   justify-content: space-between;
@@ -149,7 +149,7 @@ li{
 }
 #main-container{
 
-  width: 80%;
+  width: 100%;
 }
 
 #welcome-container{
@@ -158,13 +158,10 @@ li{
   margin-top: 30px;
   margin-right: 150px;
 }
-#aside-container{
-  background-color: #CAC4CE;
-  width: 20%;
-}
+
 
 .reflection-card{
-  width: 35%;
+  width: 30%;
 }
 
 #login-form{
@@ -180,3 +177,8 @@ li{
   margin: 0;
   padding: 0;
 }
+
+#habit-form{
+  margin-top: 20px;
+}
+

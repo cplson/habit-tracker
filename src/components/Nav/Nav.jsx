@@ -38,8 +38,6 @@ function Nav() {
               Info Page
             </Link>
 
-            <Link className="navLink" to="/mb">Motivations and Blessings</Link>
-
             <LogOutButton className="navLink" />
           </>
         )}

@@ -11,7 +11,8 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     console.log('triggered motivations GET');
     const userId = req.user.id;
     const queryText = `SELECT * FROM motivations
-    WHERE user_id = $1;`;
+    WHERE user_id = $1
+    ORDER BY motivation DESC;`;
 
     pool.query(queryText, [userId])
         .then(result => {

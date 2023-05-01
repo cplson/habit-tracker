@@ -46,7 +46,7 @@ function Blessings() {
             <div className='button-group'>
                 <Button variant='contained' sx={{ backgroundColor: '#279AF1' }}
                     onClick={postBlessing}>Add</Button>
-                <Button variant='outlined' className='reflect-button' sx={{ color: '#279AF1' }}>Reflect</Button>
+                {/* <Button variant='outlined' className='reflect-button' sx={{ color: '#279AF1' }}>Reflect</Button> */}
             </div>
             {visibility && <MbModal
                 toggleVis={toggleVis} isMotivation={isMotivation} isPost={isPost} thisBlessing={thisBlessing} setBlessing={setBlessing} />}

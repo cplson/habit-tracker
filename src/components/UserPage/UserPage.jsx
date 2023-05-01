@@ -29,9 +29,7 @@ function UserPage() {
     <>
 
       <div id="user-container">
-        <aside id='aside-container'>
-          <HabitsList />
-        </aside>
+        
 
         <div id='main-container'>
           <div id="welcome-container">
@@ -39,6 +37,11 @@ function UserPage() {
           </div>
 
           <div id='card-container'>
+          <Card id='aside-container'>
+          <CardContent>
+            <HabitsList />
+          </CardContent>
+        </Card>
             <Card variant='outlined' className="reflection-card">
               <CardContent>
                 <Motivations />

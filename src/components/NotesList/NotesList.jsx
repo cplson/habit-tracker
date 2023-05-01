@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 
-function NotesList() {
+function NotesList({activeHabit}) {
 
     const habitLog = useSelector(store => store.habitLog)
     const logToDate = [];

@@ -43,7 +43,7 @@ function Motivations() {
             <div className='button-group'>
                 <Button variant='contained' sx={{ backgroundColor: '#279AF1' }}
                     onClick={postMotivation}>Add</Button>
-                <Button variant='outlined' className='reflect-button' sx={{ color: '#279AF1' }}>Reflect</Button>
+                {/* <Button variant='outlined' className='reflect-button' sx={{ color: '#279AF1' }}>Reflect</Button> */}
             </div>
             {visibility && <MbModal
                 toggleVis={toggleVis} isMotivation={isMotivation} isPost={isPost} thisMotivation={thisMotivation} setMotivation={setMotivation}/>}
