@@ -33,7 +33,6 @@ function DisplayCalendar() {
         }
     }
 
-    console.log('active habit is:', activeHabit, habits, user);
 
     // declare dispatch
     const dispatch = useDispatch();
@@ -48,7 +47,6 @@ function DisplayCalendar() {
 
 
     const dayClick = (value, event) => {
-        console.log('trying event.detail', event.detail);
         // set temp date needed to transfer to DateTime
         let tempDate = new Date(value.toISOString());
         // temp DateTime object that will be used to set the local state
@@ -94,7 +92,6 @@ function DisplayCalendar() {
                 loggedDate = { length: 4, ...log }
             }
         }
-        // console.log(loggedDate);
         
         return <p>{loggedDate.notes}</p>
     }
@@ -102,6 +99,8 @@ function DisplayCalendar() {
     const setStatus = date => {
         // console.log('inside setStatus()');
         for (let log of habitLog) {
+            console.log('log.date is:', log.date)
+            console.log('date.toISOString() is', date.toISOString());
             if (log.date == date.toISOString()) {
                 console.log('found a match in setStatus');
                 return log.status;
