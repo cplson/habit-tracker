@@ -66,7 +66,9 @@ function DisplayCalendar() {
 
             for (let log of habitLog) {
                 // console.log(log.date, value.toISOString());
-                
+                let dateValue = log.date.split('T');
+                let valueValue = value.toISOString().split('T');
+                console.log(dateValue, valueValue);
                 if (log.date === value.toISOString()) {
                     // console.log('found a match');
                     // display PutModal
@@ -88,7 +90,7 @@ function DisplayCalendar() {
         for (let log of habitLog) {
             // console.log(date.toISOString(), log.date);
             if (log.date == date.toISOString()) {
-                console.log('found a match in setContent');
+                // console.log('found a match in setContent');
                 loggedDate = { length: 4, ...log }
             }
         }
@@ -99,10 +101,10 @@ function DisplayCalendar() {
     const setStatus = date => {
         // console.log('inside setStatus()');
         for (let log of habitLog) {
-            console.log('log.date is:', log.date)
-            console.log('date.toISOString() is', date.toISOString());
+            // console.log('log.date is:', log.date)
+            // console.log('date.toISOString() is', date.toISOString());
             if (log.date == date.toISOString()) {
-                console.log('found a match in setStatus');
+                // console.log('found a match in setStatus');
                 return log.status;
             }
         }
