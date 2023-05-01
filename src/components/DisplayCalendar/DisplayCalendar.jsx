@@ -85,12 +85,12 @@ function DisplayCalendar() {
 
     const setContent = (date) => {
         let loggedDate = {};
-        console.log('inside setContent()');
+        // console.log('inside setContent()');
 
         for (let log of habitLog) {
             // console.log(date.toISOString(), log.date);
             if (log.date == date.toISOString()) {
-                // console.log('found a match');
+                console.log('found a match in setContent');
                 loggedDate = { length: 4, ...log }
             }
         }
@@ -100,9 +100,10 @@ function DisplayCalendar() {
     }
 
     const setStatus = date => {
-        console.log('inside setStatus()');
+        // console.log('inside setStatus()');
         for (let log of habitLog) {
             if (log.date == date.toISOString()) {
+                console.log('found a match in setStatus');
                 return log.status;
             }
         }
