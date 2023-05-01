@@ -85,7 +85,7 @@ function DisplayCalendar() {
 
     const setContent = (date) => {
         let loggedDate = {};
-
+        console.log('inside setContent()');
 
         for (let log of habitLog) {
             // console.log(date.toISOString(), log.date);
@@ -100,6 +100,7 @@ function DisplayCalendar() {
     }
 
     const setStatus = date => {
+        console.log('inside setStatus()');
         for (let log of habitLog) {
             if (log.date == date.toISOString()) {
                 return log.status;
