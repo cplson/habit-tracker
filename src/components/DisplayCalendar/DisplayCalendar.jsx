@@ -89,11 +89,12 @@ function DisplayCalendar() {
 
     const setContent = (date) => {
         let loggedDate = {};
-        // console.log('inside setContent()');
-
+        let valueSplit = splitDate(date.toISOString());
         for (let log of habitLog) {
             let dateSplit = splitDate(log.date);
-            let valueSplit = splitDate(date.toISOString());
+            if(log.date == '2023-04-08'){
+                console.log(dateSplit, '-', valueSplit);
+            }
             if (dateSplit == valueSplit) {
                 loggedDate = { length: 4, ...log }
             }

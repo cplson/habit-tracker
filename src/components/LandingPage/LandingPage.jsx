@@ -20,36 +20,25 @@ function LandingPage() {
       <div className="grid">
         <div className="grid-col grid-col_8">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-            id felis metus. Vestibulum et pulvinar tortor. Morbi pharetra lacus
-            ut ex molestie blandit. Etiam et turpis sit amet risus mollis
-            interdum. Suspendisse et justo vitae metus bibendum fringilla sed
-            sed justo. Aliquam sollicitudin dapibus lectus, vitae consequat odio
-            elementum eget. Praesent efficitur eros vitae nunc interdum, eu
-            interdum justo facilisis. Sed pulvinar nulla ac dignissim efficitur.
-            Quisque eget eros metus. Vestibulum bibendum fringilla nibh a
-            luctus. Duis a sapien metus.
+          I’ve always been interested in changing some behaviors in my day to day life to improve 
+          my physical, mental, and emotional health. After many attempts with varying degrees of success, 
+          I’ve always found that one of the largest barriers I face is my limited bandwidth to focus 
+          on all of the priorities in my daily life. As my focus eventually drifts away from the change 
+          I’m attempting to make, that habit falls by the wayside. 
           </p>
 
           <p>
-            Praesent consectetur orci dui, id elementum eros facilisis id. Sed
-            id dolor in augue porttitor faucibus eget sit amet ante. Nunc
-            consectetur placerat pharetra. Aenean gravida ex ut erat commodo, ut
-            finibus metus facilisis. Nullam eget lectus non urna rhoncus
-            accumsan quis id massa. Curabitur sit amet dolor nisl. Proin
-            euismod, augue at condimentum rhoncus, massa lorem semper lacus, sed
-            lobortis augue mi vel felis. Duis ultrices sapien at est convallis
-            congue.
+          I made “Path Track” to help address this barrier. Path Track allows users to create new 
+          habits in the app, giving them a place to log their day to day progress. Users can journal 
+          their thoughts and feelings, while also being able to document the obstacles and the 
+          effects they are experiencing. Additionally Path Track gives users a place to reflect on 
+          their motivations, as well as the things in their lives they are thankful for. The 
+          importance of reflecting on these motivations and blessings is that it’s not only important 
+          to maintain focus, but also to maintain a positive mindset.
+
           </p>
 
-          <p>
-            Fusce porta diam ac tortor elementum, ut imperdiet metus volutpat.
-            Suspendisse posuere dapibus maximus. Aliquam vitae felis libero. In
-            vehicula sapien at semper ultrices. Vivamus sed feugiat libero. Sed
-            sagittis neque id diam euismod, ut egestas felis ultricies. Nullam
-            non fermentum mauris. Sed in enim ac turpis faucibus pretium in sit
-            amet nisi.
-          </p>
+         
         </div>
         <div className="grid-col grid-col_4">
           <RegisterForm />
