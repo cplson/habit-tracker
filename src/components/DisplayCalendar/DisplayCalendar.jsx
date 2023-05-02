@@ -27,8 +27,8 @@ function DisplayCalendar() {
 
     let activeHabit;
 
-    for(let habit of habits){
-        if(user.active_habit_id === habit.id){
+    for (let habit of habits) {
+        if (user.active_habit_id === habit.id) {
             activeHabit = habit.description;
         }
     }
@@ -41,11 +41,14 @@ function DisplayCalendar() {
 
     useEffect(() => {
         dispatch({ type: 'FETCH_LOG', payload: user });
-        dispatch({type: 'FETCH_HABITS'});
+        dispatch({ type: 'FETCH_HABITS' });
     }, [])
 
-
-
+    // helper to parse the date
+    const splitDate = thisDate => {
+        let splitArray = thisDate.split('T');
+        return splitArray[0];
+    }
     const dayClick = (value, event) => {
         // set temp date needed to transfer to DateTime
         let tempDate = new Date(value.toISOString());
@@ -62,15 +65,16 @@ function DisplayCalendar() {
         setType(false);
         // if dateClicked matches a log entry, open form to edit the current data
         // else open form to create new log entry
-        if(event.detail === 2){
+        if (event.detail === 2) {
 
             for (let log of habitLog) {
-                // console.log(log.date, value.toISOString());
-                let dateValue = log.date.split('T');
-                let valueValue = value.toISOString().split('T');
-                console.log(dateValue, valueValue);
-                if (log.date === value.toISOString()) {
-                    // console.log('found a match');
+                // split the strings to check
+                let dateSplit = splitDate(log.date);
+                let valueSplit = splitDate(value.toISOString());
+
+                console.log('after splits', dateSplit, valueSplit);
+                if (dateSplit === valueSplit) {
+                    console.log('found a match');
                     // display PutModal
                     setType(true);
                     setLog(log);
@@ -78,7 +82,7 @@ function DisplayCalendar() {
                     dispatch({ type: 'SET_EDIT_LOG', payload: log });
                 }
             }
-            
+
             toggleVis(true);
         }
     }
@@ -88,23 +92,21 @@ function DisplayCalendar() {
         // console.log('inside setContent()');
 
         for (let log of habitLog) {
-            // console.log(date.toISOString(), log.date);
-            if (log.date == date.toISOString()) {
-                // console.log('found a match in setContent');
+            let dateSplit = splitDate(log.date);
+            let valueSplit = splitDate(date.toISOString());
+            if (dateSplit == valueSplit) {
                 loggedDate = { length: 4, ...log }
             }
         }
-        
+
         return <p>{loggedDate.notes}</p>
     }
 
     const setStatus = date => {
-        // console.log('inside setStatus()');
         for (let log of habitLog) {
-            // console.log('log.date is:', log.date)
-            // console.log('date.toISOString() is', date.toISOString());
-            if (log.date == date.toISOString()) {
-                // console.log('found a match in setStatus');
+            let dateSplit = splitDate(log.date);
+            let valueSplit = splitDate(date.toISOString());
+            if (dateSplit == valueSplit) {
                 return log.status;
             }
         }
@@ -124,7 +126,7 @@ function DisplayCalendar() {
 
                         <div id='note-list'>
                             <h3>All Notes - {activeHabit}</h3>
-                            <NotesList activeHabit={activeHabit}/>
+                            <NotesList activeHabit={activeHabit} />
                         </div>
                     </CardContent>
                 </Card>
@@ -135,7 +137,7 @@ function DisplayCalendar() {
                 toggleVis={toggleVis} dateClicked={dateClicked}
                 dateClickedString={dateClickedString} isPut={isPut}
                 thisLog={thisLog} setLog={setLog} setDateClicked={setDateClicked}
-                setDateClickedString={setDateClickedString}/>}
+                setDateClickedString={setDateClickedString} />}
         </div>
     )
 }
